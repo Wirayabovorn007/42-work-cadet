@@ -7,7 +7,7 @@ int check(char *str, char *start)
 	i = 0;
 	while (start[i])
 	{
-		if ((str[i] != start[i]) || str[i] == '\0')
+		if ((str[i] != start[i]))
 			return (0);
 		i++;
 	}
