@@ -1,4 +1,4 @@
-#include <stddef.h>
+#include <stdlib.h>
 
 int check_n(const char *str, const char *needle, int max_len)
 {

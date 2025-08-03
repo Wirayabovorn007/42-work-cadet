@@ -1,4 +1,4 @@
-#include <stddef.h>
+#include <stdlib.h>
 
 char	*ft_strrchr(char *str, char searchC)
 {

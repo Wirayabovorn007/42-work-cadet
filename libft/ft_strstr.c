@@ -1,4 +1,4 @@
-#include <stddef.h>
+#include <stdlib.h>
 
 int check(char *str, char *start)
 {
