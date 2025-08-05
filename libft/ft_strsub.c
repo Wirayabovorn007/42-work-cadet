@@ -1,0 +1,46 @@
+#include <stdlib.h>
+
+int	ft_strlen(char const *x)
+{
+	int	i;
+
+	i = 0;
+	while (x[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
+{
+	char	*substr;
+	int	i;
+
+	if (!s || start > ft_strlen(s))
+		return NULL;
+	if (start + len > ft_strlen(s))
+		return NULL;
+
+	substr = (char *)malloc(len + 1);
+	if (!substr)
+		return NULL;
+	i = 0;
+	while (i < len)
+	{
+		substr[i] = s[start + i];
+		i++;
+	}
+	substr[len] = '\0';
+	return (substr);
+}
+
+// #include <stdio.h>
+// int main()
+// {
+// 	char s[]= "Wiraya";
+// 	char *s2 = ft_strsub(s, 2, 4);
+// 	if (s2){
+// 		printf("%s\n", s2);
+// 		free(s2);
+// 	}
+// 	return 0;
+// }
