@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/10 14:37:40 by wiraya            #+#    #+#             */
-/*   Updated: 2025/08/10 14:38:14 by wiraya           ###   ########.fr       */
+/*   Created: 2025/08/10 20:55:39 by wiraya            #+#    #+#             */
+/*   Updated: 2025/08/10 20:56:52 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stddef.h>
 
-static int	ft_strlen(char *c)
+static size_t	ft_strlen(const char *c)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (c[i])
@@ -22,23 +22,22 @@ static int	ft_strlen(char *c)
 	return (i);
 }
 
-int	ft_strlcat(char *dst, char *src, int size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int	i;
-	int	dst_len;
-	int	src_len;
+	size_t	dst_len;
+	size_t	src_len;
+	size_t	i;
 
-	i = 0;
+	dst_len = ft_strlen(dst);
 	src_len = ft_strlen(src);
-	while (dst_len < size && dst[dst_len])
-		dst_len++;
-	if (dst_len == size)
+	if (dst_len >= size)
 		return (size + src_len);
-	while (src[i] && dst_len + 1 < size - 1)
+	i = 0;
+	while (src[i] && dst_len + i < size - 1)
 	{
-		dst[dst_len + 1] = src[i];
+		dst[dst_len + i] = src[i];
 		i++;
 	}
-	dst[dst_len + 1] = '\0';
+	dst[dst_len + i] = '\0';
 	return (dst_len + src_len);
 }

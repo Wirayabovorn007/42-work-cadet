@@ -6,7 +6,7 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 15:04:19 by wiraya            #+#    #+#             */
-/*   Updated: 2025/08/10 15:04:42 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/08/10 21:04:32 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ static int	ft_strlen(char const *x)
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*substr;
-	int		i;
+	char			*substr;
+	unsigned int	i;
+	unsigned int	len_s;
 
-	if (!s || start > ft_strlen(s))
+	len_s = ft_strlen(s);
+	if (!s || start > len_s)
 		return (NULL);
-	if (start + len > ft_strlen(s))
+	if (start + len > len_s)
 		return (NULL);
 	substr = (char *)malloc(len + 1);
 	if (!substr)

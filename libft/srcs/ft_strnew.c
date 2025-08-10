@@ -6,7 +6,7 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 14:52:51 by wiraya            #+#    #+#             */
-/*   Updated: 2025/08/10 14:54:04 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/08/10 21:02:29 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void	*ft_memset(void *s, int c, size_t size)
 	unsigned char	*ptr;
 
 	i = 0;
+	ptr = (unsigned char *)s;
 	while (i < size)
 	{
 		ptr[i] = (unsigned char)c;

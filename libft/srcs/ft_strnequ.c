@@ -6,7 +6,7 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 15:02:52 by wiraya            #+#    #+#             */
-/*   Updated: 2025/08/10 15:03:03 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/08/10 20:58:43 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < n && (s1[i] || s2[i]))
