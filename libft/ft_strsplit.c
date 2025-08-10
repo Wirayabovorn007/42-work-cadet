@@ -6,7 +6,7 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 15:31:13 by wiraya            #+#    #+#             */
-/*   Updated: 2025/08/10 16:11:11 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/08/10 16:27:57 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,20 @@ static void	free_arr(char **arr, int i)
 	free(arr);
 }
 
-static void	skip(char const **s, char c)
+static void	skip_and_count_len(char const **s, int *len, char c, int op)
 {
-	while (**s == c)
-		(*s)++;
-}
-
-static void	skip_and_count_len(char const **s, int *len, char c)
-{
-	while (**s && **s != c)
+	if (op == 1)
 	{
-		(*s)++;
-		(*len)++;
+		while (**s == c)
+			(*s)++;
+	}
+	else
+	{
+		while (**s && **s != c)
+		{
+			(*s)++;
+			(*len)++;
+		}
 	}
 }
 
@@ -93,10 +95,10 @@ char	**ft_strsplit(char const *s, char c)
 	i = -1;
 	while (++i < words)
 	{
-		skip(&s, c);
 		len = 0;
+		skip_and_count_len(&s, &len, c, 1);
 		temp = s;
-		skip_and_count_len(&s, &len, c);
+		skip_and_count_len(&s, &len, c, 2);
 		arr[i] = word_dup(temp, len);
 		if (!arr[i])
 			return (free_arr(arr, i), NULL);
@@ -107,7 +109,7 @@ char	**ft_strsplit(char const *s, char c)
 
 // #include <stdio.h>
 // int main(){
-// 	char **arr = ft_strsplit("***d*3232*oioo_* 1 *0*n*", '*');
+// 	char **arr = ft_strsplit("***d*3232*oioo_* 21 p*0*n*", '*');
 // 	int i = -1;
 // 	while (arr[++i]) printf("%s\n", arr[i]);
 // }
