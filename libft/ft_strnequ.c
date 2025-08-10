@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/10 15:02:52 by wiraya            #+#    #+#             */
+/*   Updated: 2025/08/10 15:03:03 by wiraya           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
 int	ft_strnequ(char const *s1, char const *s2, size_t n)
@@ -8,10 +20,10 @@ int	ft_strnequ(char const *s1, char const *s2, size_t n)
 	while (i < n && (s1[i] || s2[i]))
 	{
 		if (s1[i] != s2[i])
-			return 0;
+			return (0);
 		if (!s1[i] && s2[i])
-			break;
+			break ;
 		i++;
 	}
-	return 1;
+	return (1);
 }

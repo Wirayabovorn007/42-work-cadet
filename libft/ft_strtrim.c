@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/10 15:05:48 by wiraya            #+#    #+#             */
+/*   Updated: 2025/08/10 15:06:37 by wiraya           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-int	ft_strlen(char const *c)
+static int	ft_strlen(char const *c)
 {
 	int	i;
 
@@ -10,20 +22,20 @@ int	ft_strlen(char const *c)
 	return (i);
 }
 
-int	is_whitespace(char c)
+static int	is_whitespace(char c)
 {
 	return (c == ' ' || c == '\n' || c == '\t');
 }
 
 char	*ft_strtrim(char const *s)
 {
-	int	start;
-	int	end;
-	int	i;
+	int		start;
+	int		end;
+	int		i;
 	char	*trim;
 
 	if (!s)
-		return NULL;
+		return (NULL);
 	start = 0;
 	while (is_whitespace(s[start]))
 		start++;
@@ -32,7 +44,7 @@ char	*ft_strtrim(char const *s)
 		end--;
 	trim = (char *)malloc(end - start + 2);
 	if (!trim)
-		return NULL;
+		return (NULL);
 	i = 0;
 	while (start <= end)
 		trim[i++] = s[start++];

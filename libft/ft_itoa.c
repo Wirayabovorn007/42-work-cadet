@@ -18,7 +18,7 @@ char	*ft_itoa(int n)
 		tmp /= 10;
 		len++;
 	}
-	str = malloc(sizeof(char) + len + 1);
+	str = (char *)malloc(len + 1);
 	if (!str)
 		return (NULL);
 	str[len] = '\0';

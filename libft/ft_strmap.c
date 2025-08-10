@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/10 14:58:25 by wiraya            #+#    #+#             */
+/*   Updated: 2025/08/10 14:59:09 by wiraya           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-int	ft_strlen(char *c)
+static int	ft_strlen(char *c)
 {
 	int	i;
 
@@ -16,10 +28,10 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	size_t	i;
 
 	if (!s || !f)
-		return NULL;
-	res = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+		return (NULL);
+	res = (char *)malloc(ft_strlen(s) + 1);
 	if (!res)
-		return NULL;
+		return (NULL);
 	i = 0;
 	while (s[i])
 	{
@@ -27,5 +39,5 @@ char	*ft_strmap(char const *s, char (*f)(char))
 		i++;
 	}
 	res[i] = '\0';
-	return res;
+	return (res);
 }

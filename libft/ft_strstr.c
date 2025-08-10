@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/10 14:41:27 by wiraya            #+#    #+#             */
+/*   Updated: 2025/08/10 14:42:20 by wiraya           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-int check(char *str, char *start)
+static int	check(char *str, char *start)
 {
 	int	i;
 
@@ -14,11 +26,10 @@ int check(char *str, char *start)
 	return (1);
 }
 
-
-char *ft_strstr(char *str, char *start)
+char	*ft_strstr(char *str, char *start)
 {
 	if (!*start)
-		return str;
+		return (str);
 	while (*str)
 	{
 		if (*str == *start && check(str, start))

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/10 15:04:19 by wiraya            #+#    #+#             */
+/*   Updated: 2025/08/10 15:04:42 by wiraya           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-int	ft_strlen(char const *x)
+static int	ft_strlen(char const *x)
 {
 	int	i;
 
@@ -13,16 +25,15 @@ int	ft_strlen(char const *x)
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
-	int	i;
+	int		i;
 
 	if (!s || start > ft_strlen(s))
-		return NULL;
+		return (NULL);
 	if (start + len > ft_strlen(s))
-		return NULL;
-
+		return (NULL);
 	substr = (char *)malloc(len + 1);
 	if (!substr)
-		return NULL;
+		return (NULL);
 	i = 0;
 	while (i < len)
 	{

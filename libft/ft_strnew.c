@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/10 14:52:51 by wiraya            #+#    #+#             */
+/*   Updated: 2025/08/10 14:54:04 by wiraya           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-void *ft_memset(void *s, int c, size_t size)
+static void	*ft_memset(void *s, int c, size_t size)
 {
-	size_t	i;
+	size_t			i;
 	unsigned char	*ptr;
 
 	i = 0;
@@ -11,17 +23,16 @@ void *ft_memset(void *s, int c, size_t size)
 		ptr[i] = (unsigned char)c;
 		i++;
 	}
-	return s;
+	return (s);
 }
 
-
-char 	*ft_strnew(size_t size)
+char	*ft_strnew(size_t size)
 {
 	char	*str;
 
 	str = (char *)malloc(size + 1);
 	if (!str)
-		return NULL;
+		return (NULL);
 	ft_memset(str, '\0', size + 1);
-	return str;
+	return (str);
 }

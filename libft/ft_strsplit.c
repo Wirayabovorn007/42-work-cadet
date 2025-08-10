@@ -1,21 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/10 15:31:13 by wiraya            #+#    #+#             */
+/*   Updated: 2025/08/10 16:11:11 by wiraya           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-int	countWords(char const *s, char delimiter)
+static int	count_words(char const *s, char delimiter)
 {
 	int	i;
-	int	newW;
+	int	new_word;
 
-	newW = 0;
+	new_word = 0;
 	i = 0;
 	while (*s)
 	{
 		if (*s == delimiter)
-			newW = 0;
+			new_word = 0;
 		else
 		{
-			if (!newW)
+			if (!new_word)
 			{
-				newW = 1;
+				new_word = 1;
 				i++;
 			}
 		}
@@ -24,10 +36,12 @@ int	countWords(char const *s, char delimiter)
 	return (i);
 }
 
-char	*word_dup(char const *str, int len)
+static char	*word_dup(char const *str, int len)
 {
-	int	i;
-	char *dup = malloc(sizeof(char) * (len + 1));
+	int		i;
+	char	*dup;
+
+	dup = (char *)malloc(len + 1);
 	if (!dup)
 		return (NULL);
 	i = 0;
@@ -40,41 +54,52 @@ char	*word_dup(char const *str, int len)
 	return (dup);
 }
 
+static void	free_arr(char **arr, int i)
+{
+	while (i > 0)
+		free(arr[--i]);
+	free(arr);
+}
+
+static void	skip(char const **s, char c)
+{
+	while (**s == c)
+		(*s)++;
+}
+
+static void	skip_and_count_len(char const **s, int *len, char c)
+{
+	while (**s && **s != c)
+	{
+		(*s)++;
+		(*len)++;
+	}
+}
+
 char	**ft_strsplit(char const *s, char c)
 {
-	char	**arr;
+	char		**arr;
 	const char	*temp;
-	int		words;
-	int	i;
-	int	len;
+	int			i;
+	int			words;
+	int			len;
 
 	if (!s)
 		return (NULL);
-	i = 0;
-	words = countWords(s, c);
-	arr = malloc(sizeof(char *) * (words + 1));
+	words = count_words(s, c);
+	arr = (char **)malloc(sizeof(char *) * (words + 1));
 	if (!arr)
-		return NULL;
-	while (i < words)
+		return (NULL);
+	i = -1;
+	while (++i < words)
 	{
-		while (*s == c)
-			s++;
+		skip(&s, c);
 		len = 0;
-		temp  = s;
-		while (*s && !(*s == c))
-		{
-			s++;
-			len++;
-		}
+		temp = s;
+		skip_and_count_len(&s, &len, c);
 		arr[i] = word_dup(temp, len);
 		if (!arr[i])
-		{
-			while (i > 0)
-				free(arr[--i]);
-			free(arr);
-			return (NULL);
-		}
-		i++;
+			return (free_arr(arr, i), NULL);
 	}
 	arr[i] = NULL;
 	return (arr);
@@ -82,7 +107,7 @@ char	**ft_strsplit(char const *s, char c)
 
 // #include <stdio.h>
 // int main(){
-// 	char **arr = ft_strsplit("***d*3232*oioo_", '*');
+// 	char **arr = ft_strsplit("***d*3232*oioo_* 1 *0*n*", '*');
 // 	int i = -1;
 // 	while (arr[++i]) printf("%s\n", arr[i]);
 // }

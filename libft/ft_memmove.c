@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/10 14:29:43 by wiraya            #+#    #+#             */
+/*   Updated: 2025/08/10 14:31:15 by wiraya           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char *d;
-	const unsigned char *s;
-	size_t	i;
+	unsigned char		*d;
+	const unsigned char	*s;
+	size_t				i;
 
 	d = (unsigned char *)dest;
 	s = (const unsigned char *)src;
@@ -12,12 +24,9 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		return (dest);
 	if (d < s)
 	{
-		i = 0;
-		while (i < n)
-		{
+		i = -1;
+		while (++i < n)
 			d[i] = s[i];
-			i++;
-		}
 	}
 	else
 	{

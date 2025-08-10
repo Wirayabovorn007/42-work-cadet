@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/10 14:57:10 by wiraya            #+#    #+#             */
+/*   Updated: 2025/08/10 14:57:59 by wiraya           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	ft_striteri(char *s, void (*f)(unsigned int , char *))
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	unsigned int	i;
 
 	if (!s || !f)
-		return;
+		return ;
 	i = 0;
 	while (s[i])
 	{

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/10 16:19:34 by wiraya            #+#    #+#             */
+/*   Updated: 2025/08/10 16:20:24 by wiraya           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
 void	ft_putchar_fd(char c, int fd)
@@ -20,8 +32,10 @@ void	ft_putnbr_fd(int n, int fd)
 	{
 		ft_putnbr_fd(num / 10, fd);
 		ft_putnbr_fd(num % 10, fd);
-	}else{
+	}
+	else
+	{
 		res = num + '0';
 		ft_putchar_fd(res, fd);
-	}	
+	}
 }
