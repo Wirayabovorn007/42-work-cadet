@@ -39,3 +39,9 @@ char	*ft_strtrim(char const *s)
 	trim[i] = '\0';
 	return (trim);
 }
+
+// #include <stdio.h>
+// int main(){
+// 	char str[] = "   Iwraya  ";
+// 	printf("%s", ft_strtrim(str));
+// }
