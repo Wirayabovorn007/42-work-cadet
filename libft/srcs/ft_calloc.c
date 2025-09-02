@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/10 14:33:56 by wiraya            #+#    #+#             */
-/*   Updated: 2025/09/02 20:23:51 by wiraya           ###   ########.fr       */
+/*   Created: 2025/09/02 20:23:31 by wiraya            #+#    #+#             */
+/*   Updated: 2025/09/02 20:27:22 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strdup(char *src)
+void	*ft_calloc(size_t count, size_t size)
 {
-	char	*ptr;
-	char	*dup;
+	void	*result;
 
-	dup = (char *)malloc(ft_strlen(src) + 1);
-	if (!dup)
+	if (count == 0 || size == 0)
+		return (malloc(1));
+	if ((count * size) > __INT_MAX__
+		|| size > __INT_MAX__
+		|| count > __INT_MAX__)
 		return (NULL);
-	ptr = dup;
-	while (*src)
-	{
-		*ptr = *src;
-		ptr++;
-		src++;
-	}
-	*ptr = '\0';
-	return (dup);
+	result = malloc(count * size);
+	if (!result)
+		return (NULL);
+	ft_bzero(result, count * size);
+	return (result);
 }

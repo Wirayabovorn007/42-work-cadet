@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striter.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/10 14:56:15 by wiraya            #+#    #+#             */
-/*   Updated: 2025/08/10 14:56:54 by wiraya           ###   ########.fr       */
+/*   Created: 2025/09/02 20:14:46 by wiraya            #+#    #+#             */
+/*   Updated: 2025/09/02 20:28:15 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_striter(char *s, void (*f)(char *))
+#include "libft.h"
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dst_size)
 {
-	if (!s || !f)
-		return ;
-	while (*s)
+	size_t	len;
+	size_t	cpy;
+
+	len = ft_strlen(src);
+	if (dst_size >= 1)
 	{
-		f(s);
-		s++;
+		if (cpy >= dst_size)
+			cpy = dst_size - 1;
+		ft_memcpy(dst, src, cpy);
+		dst[cpy] = '\0';
 	}
+	return (len);
 }
