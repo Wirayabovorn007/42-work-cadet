@@ -6,11 +6,11 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 14:29:43 by wiraya            #+#    #+#             */
-/*   Updated: 2025/08/10 14:31:15 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/09/02 21:14:55 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {

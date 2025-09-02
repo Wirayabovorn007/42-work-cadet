@@ -6,11 +6,11 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 14:26:47 by wiraya            #+#    #+#             */
-/*   Updated: 2025/08/10 14:27:17 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/09/02 21:14:45 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

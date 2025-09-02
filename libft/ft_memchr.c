@@ -6,11 +6,11 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 14:31:47 by wiraya            #+#    #+#             */
-/*   Updated: 2025/08/10 14:32:15 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/09/02 21:14:36 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

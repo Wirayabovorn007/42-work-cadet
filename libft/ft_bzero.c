@@ -6,11 +6,11 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 14:10:02 by wiraya            #+#    #+#             */
-/*   Updated: 2025/08/10 14:26:25 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/09/02 21:12:31 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

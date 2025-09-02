@@ -6,11 +6,11 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 16:28:12 by wiraya            #+#    #+#             */
-/*   Updated: 2025/08/10 16:40:41 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/09/02 21:13:15 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static void	set_and_check_val(long *num, int n, long *tmp, int *len)
 {

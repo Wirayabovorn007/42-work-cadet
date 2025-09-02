@@ -6,11 +6,11 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 14:22:54 by wiraya            #+#    #+#             */
-/*   Updated: 2025/08/10 14:24:07 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/09/02 21:14:59 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 void	*ft_memset(void *str, int c, size_t n)
 {
