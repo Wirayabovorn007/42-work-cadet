@@ -78,7 +78,7 @@ static void	skip_and_count_len(char const **s, int *len, char c, int op)
 	}
 }
 
-char	**ft_strsplit(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char		**arr;
 	const char	*temp;

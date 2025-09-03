@@ -6,11 +6,11 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 15:05:48 by wiraya            #+#    #+#             */
-/*   Updated: 2025/09/03 21:13:13 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/09/03 21:42:27 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strtrim(char const *s1, char const *set)
 {

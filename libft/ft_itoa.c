@@ -6,58 +6,51 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 16:28:12 by wiraya            #+#    #+#             */
-/*   Updated: 2025/09/02 21:13:15 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/09/03 21:38:26 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	set_and_check_val(long *num, int n, long *tmp, int *len)
+static long	get_nbr_len(long num)
 {
-	*num = n;
-	*len = 0;
-	*tmp = *num;
-	if (n <= 0)
-		*len = 1;
-	if (*num < 0)
-		*tmp = -(*num);
-}
+	long	l;
 
-static void	op_tmp(long *tmp, int *len)
-{
-	while (*tmp > 0)
+	l = 0;
+	if (num <= 0)
+		l += 1;
+	while (num)
 	{
-		*tmp /= 10;
-		(*len)++;
+		l++;
+		num /= 10;
 	}
+	return (l);
 }
 
 char	*ft_itoa(int n)
 {
-	long	num;
-	long	tmp;
-	int		len;
-	char	*str;
+	long	len;
+	char	*res;
+	long	temp;
 
-	set_and_check_val(&num, n, &tmp, &len);
-	op_tmp(&tmp, &len);
-	str = (char *)malloc(len + 1);
-	if (!str)
+	temp = n;
+	len = get_nbr_len(temp);
+	res = malloc(sizeof(char) * (len + 1));
+	if (!res)
 		return (NULL);
-	str[len] = '\0';
-	if (n == 0)
-		str[0] = '0';
-	if (n < 0)
+	if (temp == 0)
+		res[0] = '0';
+	if (temp < 0)
 	{
-		str[0] = '-';
-		num = -num;
+		res[0] = '-';
+		temp = -temp;
 	}
-	while (num > 0)
+	while (temp)
 	{
-		str[--len] = '0' + (num % 10);
-		num /= 10;
+		res[--len] = (temp % 10) + '0';
+		temp /= 10;
 	}
-	return (str);
+	return (res);
 }
 
 // #include <stdio.h>

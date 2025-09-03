@@ -22,7 +22,7 @@ char	*ft_strrchr(char *str, char searchC);
 int		ft_strncmp(char *s1, char *s2, int n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
-char	*ft_strnstr(char *str, char *start, int len);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(char *src);

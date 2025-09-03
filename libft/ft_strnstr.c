@@ -6,17 +6,16 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 14:42:38 by wiraya            #+#    #+#             */
-/*   Updated: 2025/09/03 21:04:34 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/09/03 21:41:29 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-static	int	check_n(const char *str, const char *needle, int max_len)
+static int	check_n(const char *str, const char *needle, size_t max_len)
 {
-	int	i;
+	size_t i = 0;
 
-	i = 0;
 	while (needle[i])
 	{
 		if (i >= max_len || str[i] == '\0' || str[i] != needle[i])
@@ -26,17 +25,16 @@ static	int	check_n(const char *str, const char *needle, int max_len)
 	return (1);
 }
 
-char	*ft_strnstr(char *str, char *start, int len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int	i;
+	size_t i = 0;
 
-	i = 0;
-	if (!*start)
-		return (str);
-	while (str[i] && i < len)
+	if (!*needle)
+		return ((char *)haystack);
+	while (haystack[i] && i < len)
 	{
-		if (str[i] == *start && check_n(&str[i], start, len - i))
-			return (&str[i]);
+		if (haystack[i] == *needle && check_n(&haystack[i], needle, len - i))
+			return ((char *)&haystack[i]);
 		i++;
 	}
 	return (NULL);
