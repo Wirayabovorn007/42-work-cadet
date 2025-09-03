@@ -6,13 +6,13 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 14:42:38 by wiraya            #+#    #+#             */
-/*   Updated: 2025/08/10 14:43:57 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/09/03 21:04:34 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	check_n(const char *str, const char *needle, int max_len)
+static	int	check_n(const char *str, const char *needle, int max_len)
 {
 	int	i;
 

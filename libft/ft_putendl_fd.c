@@ -6,13 +6,13 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 16:16:00 by wiraya            #+#    #+#             */
-/*   Updated: 2025/09/02 21:15:48 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/09/03 21:19:06 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char const *s, int fd)
+void	ft_putendl_fd(char *s, int fd)
 {
 	if (!*s)
 		return ;

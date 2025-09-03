@@ -6,23 +6,13 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 15:04:19 by wiraya            #+#    #+#             */
-/*   Updated: 2025/09/02 20:31:09 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/09/03 21:06:51 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static int	ft_strlen(char const *x)
-{
-	int	i;
-
-	i = 0;
-	while (x[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*substr;
 	unsigned int	i;

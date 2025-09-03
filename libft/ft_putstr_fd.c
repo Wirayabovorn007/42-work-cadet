@@ -6,13 +6,13 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 16:15:25 by wiraya            #+#    #+#             */
-/*   Updated: 2025/09/02 21:19:50 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/09/03 21:18:29 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char const *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
 	if (!*s)
 		return ;
