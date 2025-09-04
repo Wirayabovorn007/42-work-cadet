@@ -6,11 +6,11 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 14:33:20 by wiraya            #+#    #+#             */
-/*   Updated: 2025/08/10 14:33:36 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/09/04 19:57:33 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *c)
+int	ft_strlen(const char *c)
 {
 	int	i;
 
