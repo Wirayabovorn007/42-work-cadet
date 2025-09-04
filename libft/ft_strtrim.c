@@ -6,33 +6,51 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 15:05:48 by wiraya            #+#    #+#             */
-/*   Updated: 2025/09/03 21:42:27 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/09/04 20:43:10 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static int	in_set(char c, const char *set)
+{
+	while (*set)
+	{
+		if (*set == c)
+			return (1);
+		set++;
+	}
+	return (0);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	const char	*r1;
-	const char	*r2;
-	size_t		i;
-	char		*res;
+	size_t	start;
+	size_t	end;
+	size_t	len;
+	char	*trimmed;
 
 	if (!s1 || !set)
 		return (NULL);
-	while (*s1 && ft_strchr(set, *s1))
-		s1++;
-	r1 = s1;
-	r2 = ft_strchr(s1, '\0');
-	while (r2 > r1 && ft_strchr(set, *(r2 - 1)))
-		r2--;
-	i = r2 - r1;
-	if (i == 0)
+	start = 0;
+	end = ft_strlen(s1);
+	while (s1[start] && in_set(s1[start], set))
+		start++;
+	if (start == end)
 		return (ft_strdup(""));
-	res = malloc(sizeof(char) * (i + 1));
-	if (!res)
+	while (end > start && in_set(s1[end - 1], set))
+		end--;
+	len = end - start;
+	trimmed = (char *)malloc(sizeof(char) * (len + 1));
+	if (!trimmed)
 		return (NULL);
-	ft_strlcpy(res, r1, (i + 1));
-	return (res);
+	ft_memcpy(trimmed, s1 + start, len);
+	trimmed[len] = '\0';
+	return (trimmed);
 }
+
+// #include <stdio.h>
+// int main()
+// {
+// 	printf("%s", ft_strtrim("   Hello World!!! !    !!!", " !"));
+// }
