@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/10 14:42:38 by wiraya            #+#    #+#             */
-/*   Updated: 2025/09/03 21:41:29 by wiraya           ###   ########.fr       */
+/*   Created: 2025/09/05 13:14:56 by wiboonpr          #+#    #+#             */
+/*   Updated: 2025/09/05 13:14:57 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 static int	check_n(const char *str, const char *needle, size_t max_len)
 {
-	size_t i = 0;
+	size_t	i;
 
+	i = 0;
 	while (needle[i])
 	{
 		if (i >= max_len || str[i] == '\0' || str[i] != needle[i])
@@ -27,8 +28,9 @@ static int	check_n(const char *str, const char *needle, size_t max_len)
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t i = 0;
+	size_t	i;
 
+	i = 0;
 	if (!*needle)
 		return ((char *)haystack);
 	while (haystack[i] && i < len)

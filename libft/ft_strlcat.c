@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/10 20:55:39 by wiraya            #+#    #+#             */
-/*   Updated: 2025/08/10 20:56:52 by wiraya           ###   ########.fr       */
+/*   Created: 2025/09/05 13:14:28 by wiboonpr          #+#    #+#             */
+/*   Updated: 2025/09/05 23:24:03 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-
-static size_t	ft_strlen(const char *c)
-{
-	size_t	i;
-
-	i = 0;
-	while (c[i])
-		i++;
-	return (i);
-}
+#include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/10 14:09:47 by wiraya            #+#    #+#             */
-/*   Updated: 2025/09/02 21:11:42 by wiraya           ###   ########.fr       */
+/*   Created: 2025/09/05 13:11:53 by wiboonpr          #+#    #+#             */
+/*   Updated: 2025/09/05 14:43:35 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	i;
 	int	res;

@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/10 14:39:09 by wiraya            #+#    #+#             */
-/*   Updated: 2025/09/04 20:05:26 by wiraya           ###   ########.fr       */
+/*   Created: 2025/09/05 13:14:08 by wiboonpr          #+#    #+#             */
+/*   Updated: 2025/09/05 14:41:04 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, char searchC)
+char	*ft_strchr(const char *str, int searchC)
 {
-	while (*str)
+	while (*str != '\0')
 	{
-		if (*str == searchC)
+		if (*str == (char )searchC)
 			return ((char *)str);
 		str++;
 	}
-	if (searchC == '\0')
+	if ((char )searchC == '\0')
 		return ((char *)str);
 	return (NULL);
 }

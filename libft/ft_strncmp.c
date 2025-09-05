@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/10 14:44:58 by wiraya            #+#    #+#             */
-/*   Updated: 2025/08/10 14:45:26 by wiraya           ###   ########.fr       */
+/*   Created: 2025/09/05 13:14:48 by wiboonpr          #+#    #+#             */
+/*   Updated: 2025/09/05 20:39:09 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, int n)
+#include "libft.h"
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while ((s1[i] || s2[i]) && (i < n))
