@@ -6,21 +6,21 @@
 /*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 11:09:17 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/09/06 11:18:23 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/09/06 12:20:31 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-    t_list  l;
+	t_list	l;
 
-    if (*lst)
-    {
-        l = ft_lstlast(*lst);
-        l->next = new;
-    }
-    else
-        *lst = new;
+	if (*lst)
+	{
+		l = ft_lstlast(*lst);
+		l->next = new;
+	}
+	else
+		*lst = new;
 }

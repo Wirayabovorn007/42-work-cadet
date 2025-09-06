@@ -6,29 +6,29 @@
 /*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 10:36:41 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/09/06 10:46:33 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/09/06 12:16:24 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-    int     c;
-    t_list  *current;
+	int		c;
+	t_list	*current;
 
-    if (!lst)
-        return (0);
-    current = lst;
-    c = 1;
-    while (current != NULL)
-    {
-        if (current -> next == NULL)
-            return (c);
-        c++;
-        current = current->next;
-    }
-    return (c);
+	if (!lst)
+		return (0);
+	current = lst;
+	c = 1;
+	while (current != NULL)
+	{
+		if (current -> next == NULL)
+			return (c);
+		c++;
+		current = current->next;
+	}
+	return (c);
 }
 
 // #include <stdio.h>
