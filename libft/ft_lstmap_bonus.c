@@ -6,7 +6,7 @@
 /*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 11:36:47 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/09/06 12:17:55 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/09/06 12:44:23 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	list = NULL;
 	while (lst)
 	{
-		new_node = ft_lstnew(f(lst->content));
-		if (!new_node)
+		node = ft_lstnew(f(lst->content));
+		if (!node)
 		{
 			ft_lstclear(&list, del);
 			return (NULL);
 		}
-		ft_lstadd_back(&list, new_node);
+		ft_lstadd_back(&list, node);
 		lst = lst->next;
 	}
 	return (list);
