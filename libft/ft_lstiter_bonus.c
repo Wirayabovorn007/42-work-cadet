@@ -6,7 +6,7 @@
 /*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 11:32:42 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/09/06 12:43:28 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/09/06 13:10:43 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	while (lst)
 	{
 		f(lst->content);
-		*lst = *lst->next;
+		lst = lst->next;
 	}
 }
