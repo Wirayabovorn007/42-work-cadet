@@ -6,7 +6,7 @@
 #    By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/05 13:15:32 by wiboonpr          #+#    #+#              #
-#    Updated: 2025/09/06 13:01:20 by wiboonpr         ###   ########.fr        #
+#    Updated: 2025/09/08 21:48:00 by wiboonpr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,12 @@ BOBJ = $(BONUS:.c=.o)
 
 all: $(NAME)
 
+
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
+
+# %.o : %.c
+# 	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: $(OBJ) $(BOBJ)
 	$(AR) $(NAME) $(OBJ) $(BOBJ)
