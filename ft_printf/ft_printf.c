@@ -21,25 +21,30 @@ void	separate_case(const char *format, va_list args)
 
 int ft_printf(const char *format, ...)
 {
+	int		len;
 	va_list	args;
 
+	if (!format)
+		return (-1);
 	va_start(args, format);
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
+			len++;
 			separate_case(format, args);
 		}
 		else
 			write(1, &(*format), 1);
 		format++;
+		len++;
 	}
 	va_end(args);
-	return 0;
+	return (len);
 }
 
 int main()
 {
-	ft_printf("Char: %c and %c\nString: %s\nInteger: %d %d\nUnsinged int: %u %u\nPercent: %%", 'A', 'B', "Wirayabovorn Boonpriam", 1, -1, -22, 81);
+	ft_printf("Char: %c and %c\nString: %s\nInteger: %d %d\nUnsinged int: %u %u\nPercent: 20%%", 'A', 'B', "Wirayabovorn Boonpriam", 1, -1, -22, 81);
 }
