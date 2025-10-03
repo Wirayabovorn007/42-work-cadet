@@ -1,5 +1,15 @@
 #include "ft_printf.h"
 
+int	ft_strlen(char *c)
+{
+	int	i;
+
+	i = -1;
+	while (c[++i])
+		;
+	return (i);
+}
+
 void	handle_char(va_list args)
 {
 	char	c;
