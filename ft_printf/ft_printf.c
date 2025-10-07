@@ -6,13 +6,23 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:58:36 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/10/07 17:20:16 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/10/07 19:11:55 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	check_specifier(const char *format, va_list args)
+int check_bonus_specifier(const char *format, va_list args, int i)
+{
+	//if (*format == '-')
+
+	if (*format == '0')
+		return (zeropad_validator(format, args, i));
+	//if (*format == '.')
+	return (0);
+}
+
+int	check_specifier(const char *format, va_list args, int i)
 {
 	if (*format == 'c')
 		return (ft_putchar(va_arg(args, int)));
@@ -28,12 +38,12 @@ int	check_specifier(const char *format, va_list args)
 		return (handle_x(args, *format));
 	if (*format == '%')
 		return (ft_putchar('%'));
-	//check_bonus_specifier()
-	return (0);
+	return (check_bonus_specifier(format, args, i));
 }
 
 int	ft_printf(const char *format, ...)
 {
+	int		i;
 	int		len;
 	va_list	args;
 
@@ -46,13 +56,15 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			len += check_specifier(format, args);
+			i++;
+			len += check_specifier(format, args, i);
 		}
 		else
 		{
 			write(1, &(*format), 1);
 			len++;
 		}
+		i++;
 		format++;
 	}
 	va_end(args);
