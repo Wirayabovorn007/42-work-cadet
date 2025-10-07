@@ -1,39 +1,50 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/07 12:58:36 by wiboonpr          #+#    #+#             */
+/*   Updated: 2025/10/07 14:10:34 by wiboonpr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-
-void	check_specifier(const char *format, va_list args)
+int	check_specifier(const char *format, va_list args)
 {
 	if (*format == 'c')
-		handle_char(args);
+		return (ft_putchar(va_arg(args, int)));
 	if (*format == 's')
-		handle_string(args);
+		return (handle_string(args));
 	if (*format == 'p')
-		handle_p(args);
+		return (handle_p(args));
 	if (*format == 'd' || *format == 'i')
-		handle_int(args);
+		return (handle_int(args));
 	if (*format == 'u')
-		handle_unsinged_int(args);
+		return (handle_unsinged_int(args));
 	if (*format == 'x' || *format == 'X')
-		handle_x(args, *format);
+		return (handle_x(args, *format));
 	if (*format == '%')
-		write(1, "%", 1);
+		return (ft_putchar('%'));
 }
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	int		len;
 	va_list	args;
 
 	if (!format)
 		return (-1);
+	len = 0;
 	va_start(args, format);
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			len++;
-			check_specifier(format, args);
+			len += check_specifier(format, args);
 		}
 		else
 			write(1, &(*format), 1);
@@ -43,9 +54,3 @@ int ft_printf(const char *format, ...)
 	va_end(args);
 	return (len);
 }
-
-// int main()
-// {
-// 	int a = 102310221;
-// 	ft_printf("Char: %c and %c\nString: %s\nInteger: %d %d\nUnsinged int: %u %u\nPercent: 20%%\nOctal 012: %i and Hex 0xA: %i\nMemmory %p\nx 48879: %x %X", 'A', 'B', "Wirayabovorn Boonpriam", 1, -1, -22, 81, 012, 0xA, &a, 3735928559, 3735928559);
-// }

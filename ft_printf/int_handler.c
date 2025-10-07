@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   int_handler.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/07 12:58:45 by wiboonpr          #+#    #+#             */
+/*   Updated: 2025/10/07 14:05:34 by wiboonpr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	ft_putchar_fd(char c, int fd)
@@ -28,9 +40,21 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 }
 
+int	get_nbr_len(int n)
+{
+	int	i;
+
+	i = 0;
+	while (n)
+	{
+		n /= 10;
+		i++;
+	}
+}
+
 void	ft_put_unsigned_nbr_fd(unsigned int n, int fd)
 {
-	char	res;
+	char			res;
 	unsigned long	num;
 
 	num = n;
@@ -46,19 +70,20 @@ void	ft_put_unsigned_nbr_fd(unsigned int n, int fd)
 	}
 }
 
-
-void	handle_int(va_list args)
+int	handle_int(va_list args)
 {
 	int	n;
 
 	n = va_arg(args, int);
 	ft_putnbr_fd(n, 1);
+	return (get_nbr_len(n));
 }
 
-void	handle_unsinged_int(va_list args)
+int	handle_unsinged_int(va_list args)
 {
 	unsigned int	n;
 
 	n = va_arg(args, unsigned int);
 	ft_put_unsigned_nbr_fd(n, 1);
+	return (get_nbr_len((int)n));
 }

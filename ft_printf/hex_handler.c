@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hex_handler.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/07 12:58:42 by wiboonpr          #+#    #+#             */
+/*   Updated: 2025/10/07 14:04:52 by wiboonpr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	print_hex(unsigned long int n)
@@ -34,7 +46,12 @@ void	print_hex_x(unsigned long int n, const char x)
 	write(1, &c, 1);
 }
 
-void	handle_p(va_list args)
+// int	get_hex_len()
+// {
+	
+// }
+
+int	handle_p(va_list args)
 {
 	void			*ptr;
 	unsigned long	addr;
@@ -48,13 +65,15 @@ void	handle_p(va_list args)
 		write(1, "0x", 2);
 		print_hex(addr);
 	}
+	return 1;
 }
 
-void	handle_x(va_list args, const char x)
+int	handle_x(va_list args, const char x)
 {
 	void	*ptr;
-	
+
 	ptr = va_arg(args, void *);
 	if (ptr)
 		print_hex_x((unsigned long int)ptr, x);
+	return 1;
 }

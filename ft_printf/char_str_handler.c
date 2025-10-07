@@ -1,28 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   char_str_handler.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/07 12:58:28 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/10/07 14:10:44 by wiboonpr         ###   ########.fr       */
+/*   Created: 2025/10/07 12:58:33 by wiboonpr          #+#    #+#             */
+/*   Updated: 2025/10/07 14:12:29 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <unistd.h> 
+#include "ft_printf.h"
 
-int		ft_printf(const char *format, ...);
-int		ft_putchar(char c);
-int		ft_strlen(char *c);
-int		handle_x(va_list args, const char x);
-int		handle_p(va_list args);
-int		handle_string(va_list args);
-int		handle_int(va_list args);
-int		handle_unsinged_int(va_list args);
-int		handle_i(va_list args);
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
 
-#endif
+int	ft_strlen(char *c)
+{
+	int	i;
+
+	i = -1;
+	while (c[++i])
+		;
+	return (i);
+}
+
+int	handle_string(va_list args)
+{
+	char	*str;
+
+	str = (char *)va_arg(args, char *);
+	while (*str)
+	{
+		ft_putchar(*str);
+		str++;
+	}
+	return (ft_strlen(str));
+}
