@@ -6,7 +6,7 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:58:36 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/10/07 21:50:26 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/10/07 21:59:10 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
+			// while (*format && is_not_specifier(*format))
+			// 	format++;
 			len += check_specifier(format, args);
 		}
 		else
