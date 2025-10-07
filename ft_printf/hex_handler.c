@@ -1,6 +1,5 @@
 #include "ft_printf.h"
 
-
 void	print_hex(unsigned long int n)
 {
 	char	c;
