@@ -38,5 +38,5 @@ int	zeropad_validator(const char *f, va_list args, int i)
 	if (padwidth < len)
 		return (handle_int(args));
 	print_zeropad(padwidth);
-	return (padwidth + (handle_int(args)));
+	return (padwidth - (handle_int(args)));
 }
