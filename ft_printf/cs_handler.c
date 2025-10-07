@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   char_str_handler.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:58:33 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/10/07 14:39:30 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/10/07 17:40:07 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int	ft_putchar(char c)
 }
 
 
-int	handle_string(char *str)
+int	ft_putstr(char *str)
 {
 	int	i;
 
 	i = -1;
 	if (!str)
 	{
-		handle_string("(null)");
+		ft_putstr("(null)");
 		return (6);
 	}
 	while (str[++i])

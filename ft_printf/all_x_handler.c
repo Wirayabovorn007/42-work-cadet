@@ -1,38 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hex_handler.c                                      :+:      :+:    :+:   */
+/*   ax_all_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:58:42 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/10/07 14:41:33 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/10/07 18:04:51 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_hex(unsigned long int n)
+int	print_hex(unsigned long int n)
 {
 	char	c;
+	int		len;
 
+	len = 0;
 	if (n >= 16)
-		print_hex(n / 16);
+		len += print_hex(n / 16);
 	if (n % 16 < 10)
 		c = (n % 16) + '0';
 	else
 		c = (n % 16 - 10) + 'a';
 	write(1, &c, 1);
+	len++;
+	return (len);
 }
 
-void	print_hex_x(unsigned long int n, const char x)
+int	print_hex_x(unsigned long int n, const char x)
 {
+	int		len;
 	int		is_upper;
 	char	c;
 
+	len = 0;
 	is_upper = x == 'X';
 	if (n >= 16)
-		print_hex_x(n / 16, x);
+		len += print_hex_x(n / 16, x);
 	if (n % 16 < 10)
 		c = (n % 16) + '0';
 	else
@@ -44,34 +50,41 @@ void	print_hex_x(unsigned long int n, const char x)
 			c += 'a';
 	}
 	write(1, &c, 1);
+	len++;
+	return (len);
 }
 
-// int	get_hex_len()
-// {
-	
-// }
 
 int	handle_p(va_list args)
 {
-	unsigned long	ptr;
+	int				len;
+	unsigned long	n;
 
-	ptr = va_arg(args, unsigned long);
-	if (!ptr)
-		write(1, "0x0", 3);
-	else
+	len = 0;
+	n = va_arg(args, unsigned long);
+	if (!n)
 	{
-		write(1, "0x", 2);
-		print_hex(ptr);
+		ft_putstr("(nil)");
+		return (5);
 	}
-	return 1;
+	ft_putstr("0x");
+	len += 2;
+	len += print_hex(n);
+	return (len);
 }
 
 int	handle_x(va_list args, const char x)
 {
-	void	*ptr;
+	int					len;
+	unsigned int	n;
 
-	ptr = va_arg(args, void *);
-	if (ptr)
-		print_hex_x((unsigned long int)ptr, x);
-	return 1;
+	len = 0;
+	n = va_arg(args, unsigned int);
+	if (!n)
+	{
+		write(1, "0", 1);
+		return (1);
+	}
+	len += print_hex_x(n, x);
+	return (len);
 }

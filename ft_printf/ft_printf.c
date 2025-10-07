@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:58:36 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/10/07 14:32:39 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/10/07 17:20:16 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,19 @@ int	check_specifier(const char *format, va_list args)
 	if (*format == 'c')
 		return (ft_putchar(va_arg(args, int)));
 	if (*format == 's')
-		return (handle_string(va_arg(args, char *)));
+		return (ft_putstr(va_arg(args, char *)));
 	if (*format == 'p')
 		return (handle_p(args));
 	if (*format == 'd' || *format == 'i')
 		return (handle_int(args));
 	if (*format == 'u')
-		return (handle_unsinged_int(args));
+		return (handle_unsigned_int(args));
 	if (*format == 'x' || *format == 'X')
 		return (handle_x(args, *format));
 	if (*format == '%')
 		return (ft_putchar('%'));
 	//check_bonus_specifier()
+	return (0);
 }
 
 int	ft_printf(const char *format, ...)
