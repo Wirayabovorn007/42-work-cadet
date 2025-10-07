@@ -6,7 +6,7 @@
 /*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:58:33 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/10/07 14:12:29 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:39:30 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,20 @@ int	ft_putchar(char c)
 	return (1);
 }
 
-int	ft_strlen(char *c)
+
+int	handle_string(char *str)
 {
 	int	i;
 
 	i = -1;
-	while (c[++i])
-		;
-	return (i);
-}
-
-int	handle_string(va_list args)
-{
-	char	*str;
-
-	str = (char *)va_arg(args, char *);
-	while (*str)
+	if (!str)
 	{
-		ft_putchar(*str);
-		str++;
+		handle_string("(null)");
+		return (6);
 	}
-	return (ft_strlen(str));
+	while (str[++i])
+	{
+		ft_putchar(str[i]);
+	}
+	return (i);
 }

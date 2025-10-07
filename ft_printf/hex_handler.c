@@ -6,7 +6,7 @@
 /*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:58:42 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/10/07 14:04:52 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/10/07 14:41:33 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,15 @@ void	print_hex_x(unsigned long int n, const char x)
 
 int	handle_p(va_list args)
 {
-	void			*ptr;
-	unsigned long	addr;
+	unsigned long	ptr;
 
-	ptr = va_arg(args, void *);
-	addr = (unsigned long)ptr;
+	ptr = va_arg(args, unsigned long);
 	if (!ptr)
 		write(1, "0x0", 3);
 	else
 	{
 		write(1, "0x", 2);
-		print_hex(addr);
+		print_hex(ptr);
 	}
 	return 1;
 }
