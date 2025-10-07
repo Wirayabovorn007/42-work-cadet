@@ -4,12 +4,9 @@ void	print_zeropad(int n)
 {
 	int	i;
 
-	i = 0;
-	while (i < n)
-	{
+	i = -1;
+	while (++i < n)
 		ft_putchar('0');
-		i++;
-	}
 }
 
 int	is_not_specifier(char c)
@@ -18,26 +15,31 @@ int	is_not_specifier(char c)
 		|| c == 'x' || c == 'X' || c == 'p'));
 }
 
-int	zeropad_validator(const char *f, va_list args, int i)
+int	zeropad_validator(const char *f, va_list args)
 {
+	int		num;
 	int		len;
 	int		padwidth;
 
-	i++;
+	f++;
 	len = 0;
 	padwidth = 0;
-	while (is_not_specifier(f[i]))
+	while (is_not_specifier(*f))
 	{
-		if (f[i] == '%')
+		if (*f == '%')
 			return (0);
-		if (f[i] >= '0' && f[i] <= '9')
-			padwidth = (padwidth * 10) + (f[i] - '0');
-		i++;
+		if (*f >= '0' && *f <= '9')
+			padwidth = (padwidth * 10) + (*f - '0');
+		f++;
 	}
-	len = get_nbr_len(va_arg(args, int));
-	if (padwidth < len)
-		return (handle_int(args));
-	print_zeropad(padwidth);
-	handle_int(args);
+	num = va_arg(args, int);
+	len = get_nbr_len(num);
+	if (padwidth <= len)
+	{
+		ft_putnbr(num);
+		return (len);
+	}
+	print_zeropad(padwidth - len);
+	ft_putnbr(num);
 	return (padwidth);
 }
