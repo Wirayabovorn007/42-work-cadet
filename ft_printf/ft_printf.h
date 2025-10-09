@@ -6,7 +6,7 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:58:28 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/10/07 21:50:11 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/10/09 10:22:52 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_putnbr(int n);
 int		ft_putchar(char c);
 int		get_nbr_len(int n);
 int		ft_putstr(char *str);
-int		zeropad_validator(const char *f, va_list args);
+int		zeropad_validator(const char **f, va_list args);
 int		handle_x(va_list args, const char x);
 int		handle_p(va_list args);
 int		handle_int(va_list args);

@@ -15,22 +15,22 @@ int	is_not_specifier(char c)
 		|| c == 'x' || c == 'X' || c == 'p'));
 }
 
-int	zeropad_validator(const char *f, va_list args)
+int	zeropad_validator(const char **f, va_list args)
 {
 	int		num;
 	int		len;
 	int		padwidth;
 
-	f++;
+	(*f)++;
 	len = 0;
 	padwidth = 0;
-	while (is_not_specifier(*f))
+	while (is_not_specifier(**f))
 	{
-		if (*f == '%')
+		if (**f == '%')
 			return (0);
-		if (*f >= '0' && *f <= '9')
-			padwidth = (padwidth * 10) + (*f - '0');
-		f++;
+		if (**f >= '0' && **f <= '9')
+			padwidth = (padwidth * 10) + (**f - '0');
+		(*f)++;
 	}
 	num = va_arg(args, int);
 	len = get_nbr_len(num);

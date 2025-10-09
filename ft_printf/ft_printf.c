@@ -6,23 +6,23 @@
 /*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:58:36 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/10/07 21:59:10 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/10/09 10:13:45 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int check_bonus_specifier(const char *format, va_list args)
+int check_bonus_specifier(const char **format, va_list args)
 {
 	//if (*format == '-')
 
-	if (*format == '0')
+	if (**format == '0')
 		return (zeropad_validator(format, args));
 	//if (*format == '.')
 	return (0);
 }
 
-int	check_specifier(const char *format, va_list args)
+int	check_normal_specifier(const char *format, va_list args)
 {
 	if (*format == 'c')
 		return (ft_putchar(va_arg(args, int)));
@@ -38,26 +38,30 @@ int	check_specifier(const char *format, va_list args)
 		return (handle_x(args, *format));
 	if (*format == '%')
 		return (ft_putchar('%'));
-	return (check_bonus_specifier(format, args));
+	return (0);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	int		len;
+	int		temp;
 	va_list	args;
 
 	if (!format)
 		return (-1);
 	len = 0;
+	temp = 0;
 	va_start(args, format);
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			// while (*format && is_not_specifier(*format))
-			// 	format++;
-			len += check_specifier(format, args);
+			temp = check_normal_specifier(format, args);
+			if (temp)
+				len += temp;
+			else
+				len += check_bonus_specifier(&format, args);
 		}
 		else
 		{
