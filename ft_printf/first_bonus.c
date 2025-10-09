@@ -33,19 +33,22 @@ int	zeropad_validator(const char **f, va_list args)
 			padwidth = (padwidth * 10) + (**f - '0');
 		(*f)++;
 	}
-	num = va_arg(args, int);
-	len = get_nbr_len(num);
-	if (padwidth <= len)
+	if (**f == 'd' || **f == 'i')
 	{
+		num = va_arg(args, int);
+		len = get_nbr_len(num);
+		if (padwidth <= len)
+		{
+			ft_putnbr(num);
+			return (len);
+		}
+		if (num < 0)
+		{
+			ft_putchar('-');
+			num  = -num;
+		}
+		print_zeropad(padwidth - len);
 		ft_putnbr(num);
-		return (len);
 	}
-	if (num < 0)
-	{
-		ft_putchar('-');
-		num  = -num;
-	}
-	print_zeropad(padwidth - len);
-	ft_putnbr(num);
 	return (padwidth);
 }
