@@ -9,6 +9,7 @@ void	print_zeropad(int n)
 		ft_putchar('0');
 }
 
+
 int	is_not_specifier(char c)
 {
 	return (!(c == 'd' || c == 'i' || c == 'u' 
