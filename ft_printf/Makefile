@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+         #
+#    By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/07 12:58:47 by wiboonpr          #+#    #+#              #
-#    Updated: 2025/10/07 13:33:26 by wiboonpr         ###   ########.fr        #
+#    Updated: 2025/10/09 10:25:54 by wiraya           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,8 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	$(AR) $(NAME) $(OBJS)
+
+bonus : all
 
 clean : 
 	rm -f $(OBJS)

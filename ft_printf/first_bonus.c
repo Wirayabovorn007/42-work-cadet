@@ -39,6 +39,11 @@ int	zeropad_validator(const char **f, va_list args)
 		ft_putnbr(num);
 		return (len);
 	}
+	if (num < 0)
+	{
+		ft_putchar('-');
+		num  = -num;
+	}
 	print_zeropad(padwidth - len);
 	ft_putnbr(num);
 	return (padwidth);
