@@ -1,6 +1,6 @@
 #include "get_next_line.h"
 
-static char	*read_until_newline(int fd, char *stash)
+static char	*read_until_nl(int fd, char *stash)
 {
 	char	*buf;
 	ssize_t	bytes;
@@ -80,7 +80,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	stash = read_until_newline(fd, stash);
+	stash = read_until_nl(fd, stash);
 	if (!stash)
 		return (NULL);
 	line = extract_line(stash);
@@ -88,23 +88,23 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-// #include <fcntl.h> //open()
-// #include <stdio.h> //printf()
-// #include "get_next_line.h"
+#include <fcntl.h> //open()
+#include <stdio.h> //printf()
+#include "get_next_line.h"
 
-// int main(void)
-// {
-// 	int		fd;
-// 	char	*line;
+int main(void)
+{
+	int		fd;
+	char	*line;
 
-// 	fd = open("test.txt", O_RDONLY); // open a test file
-// 	if (fd < 0)
-// 		return (1);
-// 	while ((line = get_next_line(fd)) != NULL)
-// 	{
-// 		printf("%s", line); //print each line
-// 		free(line);
-// 	}
-// 	close(fd);
-// 	return (0);
-// }
+	fd = open("test.txt", O_RDONLY); // open a test file
+	if (fd < 0)
+		return (1);
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("%s", line); //print each line
+		free(line);
+	}
+	close(fd);
+	return (0);
+}
