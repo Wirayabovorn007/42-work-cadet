@@ -88,23 +88,21 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-#include <fcntl.h> //open()
-#include <stdio.h> //printf()
-#include "get_next_line.h"
-
-int main(void)
-{
-	int		fd;
-	char	*line;
-
-	fd = open("test.txt", O_RDONLY); // open a test file
-	if (fd < 0)
-		return (1);
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		printf("%s", line); //print each line
-		free(line);
-	}
-	close(fd);
-	return (0);
-}
+// #include <fcntl.h> //open()
+// #include <stdio.h> //printf()
+// #include "get_next_line.h"
+// int main(void)
+// {
+// 	int		fd;
+// 	char	*line;
+// 	fd = open("test.txt", O_RDONLY); // open a test file
+// 	if (fd < 0)
+// 		return (1);
+// 	while ((line = get_next_line(fd)) != NULL)
+// 	{
+// 		printf("%s", line); //print each line
+// 		free(line);
+// 	}
+// 	close(fd);
+// 	return (0);
+// }
