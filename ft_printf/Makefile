@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+         #
+#    By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/07 12:58:47 by wiboonpr          #+#    #+#              #
-#    Updated: 2025/10/09 10:25:54 by wiraya           ###   ########.fr        #
+#    Updated: 2025/10/14 12:13:02 by wiboonpr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,6 @@ all : $(NAME)
 $(NAME) : $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
-bonus : all
-
 clean : 
 	rm -f $(OBJS)
 
@@ -34,4 +32,4 @@ fclean :
 
 re : fclean all
 
-.PHONY : all clean fclean re bonus
+.PHONY : all clean fclean re

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cs_handler.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:58:33 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/10/07 21:22:51 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/10/14 12:17:20 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	ft_putchar(char c)
 	write(1, &c, 1);
 	return (1);
 }
-
 
 int	ft_putstr(char *str)
 {

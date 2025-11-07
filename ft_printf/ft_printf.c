@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:58:36 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/10/09 10:13:45 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/10/14 13:23:18 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int check_bonus_specifier(const char **format, va_list args)
-{
-	//if (*format == '-')
-
-	if (**format == '0')
-		return (zeropad_validator(format, args));
-	//if (*format == '.')
-	return (0);
-}
 
 int	check_normal_specifier(const char *format, va_list args)
 {
@@ -44,30 +34,21 @@ int	check_normal_specifier(const char *format, va_list args)
 int	ft_printf(const char *format, ...)
 {
 	int		len;
-	int		temp;
 	va_list	args;
 
 	if (!format)
 		return (-1);
 	len = 0;
-	temp = 0;
 	va_start(args, format);
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			temp = check_normal_specifier(format, args);
-			if (temp)
-				len += temp;
-			else
-				len += check_bonus_specifier(&format, args);
+			len += check_normal_specifier(format, args);
 		}
 		else
-		{
-			write(1, &(*format), 1);
-			len++;
-		}
+			len += ft_putchar(*format);
 		format++;
 	}
 	va_end(args);

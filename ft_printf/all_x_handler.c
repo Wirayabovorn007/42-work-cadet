@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ax_all_handler.c                                   :+:      :+:    :+:   */
+/*   all_x_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:58:42 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/10/07 18:04:51 by wiraya           ###   ########.fr       */
+/*   Updated: 2025/10/14 12:17:01 by wiboonpr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	print_hex_x(unsigned long int n, const char x)
 	return (len);
 }
 
-
 int	handle_p(va_list args)
 {
 	int				len;
@@ -75,7 +74,7 @@ int	handle_p(va_list args)
 
 int	handle_x(va_list args, const char x)
 {
-	int					len;
+	int				len;
 	unsigned int	n;
 
 	len = 0;
