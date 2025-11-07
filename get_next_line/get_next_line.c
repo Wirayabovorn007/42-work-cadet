@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/28 19:17:07 by wiboonpr          #+#    #+#             */
+/*   Updated: 2025/11/07 14:38:25 by wiboonpr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 static char	*read_until_nl(int fd, char *stash)
@@ -28,9 +40,10 @@ static char	*read_until_nl(int fd, char *stash)
 
 static char	*extract_line(char *stash)
 {
-	size_t	i = 0;
+	size_t	i;
 	char	*line;
 
+	i = 0;
 	if (!stash || !stash[0])
 		return (NULL);
 	while (stash[i] && stash[i] != '\n')
@@ -52,9 +65,12 @@ static char	*extract_line(char *stash)
 
 static char	*update_stash(char *stash)
 {
-	size_t	i = 0, j = 0;
+	size_t	i;
+	size_t	j;
 	char	*new_stash;
 
+	i = 0;
+	j = 0;
 	while (stash[i] && stash[i] != '\n')
 		i++;
 	if (!stash[i])
