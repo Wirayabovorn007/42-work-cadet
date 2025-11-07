@@ -1,27 +1,19 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   helper_func.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/07 21:18:53 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/11/07 21:47:32 by wiboonpr         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "push_swap.h"
 
-Stack	*initialize(Stack *stack, int max)
+Stack	*initialize(int max)
 {
 	Stack	*st;
-	int	*arr;
 
-	st = stack;
-	arr = st->arr;
-	arr = malloc(sizeof(int) * max);
-	if (!arr)
+	st = malloc(sizeof(Stack));
+	if (!st)
 		return (NULL);
+	st->arr = malloc(sizeof(int) * max);
+	if (!st->arr)
+	{
+		free(st);
+		return (NULL);
+	}
 	st->top = -1;
 	return (st);
 }

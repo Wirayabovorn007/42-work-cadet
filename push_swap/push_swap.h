@@ -8,8 +8,10 @@ typedef struct Stack
 	int	top;
 }	Stack;
 
-Stack	*initialize(Stack *stack, int max);
+int		push_swap(int argc, char *argv[]);
+Stack	*initialize(int max);
+int		has_err(int argc, char *argv[]);
 void	push(int value, Stack *stack, int max);
-int	ft_atoi(const char *str);
+int		ft_atoi(const char *str);
 
 #endif
