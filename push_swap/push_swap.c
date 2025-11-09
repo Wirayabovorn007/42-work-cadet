@@ -1,5 +1,6 @@
 
 #include "push_swap.h"
+#include "ft_printf.h"
 
 int	has_err(int argc, char *argv[])
 {
@@ -32,6 +33,10 @@ int	push_swap(int argc, char *argv[])
 		push(ft_atoi(argv[i]), a, max);
 		i++;
 	}
+	int *arr; //test
+	arr = a->arr;
+	for (int i=0; arr[i]; i++)
+		ft_printf("%d\n", arr[i]);
 	return (0);
 }
 
