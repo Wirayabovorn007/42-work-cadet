@@ -8,15 +8,15 @@ int	has_err(int argc, char *argv[])
 		//printf("Error\n");
 		return (1);
 	}
-
+	//check for dulplicate num -> use split val
 	return (0);
 }
 
+#include <stdio.h>
 int	push_swap(int argc, char *argv[])
 {
 	Stack 	*a;
 	Stack 	*b;
-	int		i;
 	int		max;
 
 	if (has_err(argc, argv))
@@ -26,16 +26,16 @@ int	push_swap(int argc, char *argv[])
 	b = initialize(max);
 	if (!a || !b)
 		return (1);
-	i = 1;
-	while (i < argc)
-	{
-		push(ft_atoi(argv[i]), a, max);
-		i++;
-	}
+	assign_init(a, argc, argv);
+	
 	// int *arr; //test
 	// arr = a->arr;
-	// for (int i=0; arr[i]; i++)
-	// 	ft_printf("%d\n", arr[i]);
+	// for (int i=0; i < get_size(argv[1]); i++)
+	// 	printf("%d\n", arr[i]);
+	free(a->arr);
+	free(a);
+	free(b->arr);
+	free(b);
 	return (0);
 }
 
