@@ -31,6 +31,20 @@ void	push(int value, Stack *stack)
 	arr[++stack->top] = value;
 }
 
+int	is_found(int *arr, int val, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (arr[i] == val)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int	check_argv(char *argv[])
 {
 	int	i;
@@ -80,28 +94,46 @@ int	get_size(char *str)
 	}
 	return (count);
 }
+
+int	ft_strlen(char *str)
+{
+	int 	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 //#include <stdio.h>
-int*	split_val(char *argv)
+int*	split_val(char *argv) // "-1 -2 -3" didn't handle this case yet
 {
 	int	tmp;
 	int	*arr;
 	int	i;
 	int	j;
+	int	n;
 	int	in_num;
 
 	//printf("Size: %d\n", get_size(argv));
+	i = 0;
+	while (i < ft_strlen(argv))
+		if (!(argv[i] >= '0' && argv[i] <= '9') && !(argv[i] != ' ')) // "1 2 3 one 4"
+			return (NULL);
 	arr = malloc(get_size(argv) * sizeof(int));
 	if (!arr)
 		return (NULL);
-	tmp = 0;
 	i = 0;
+	tmp = 0;
 	j = 0;
+	n = 1;
 	in_num = 0;
 	while (argv[j])
 	{
+		if (argv[j] == '-')
+			n = -1;
 		if (argv[j] >= '0' && argv[j] <= '9')
 		{
-			tmp = (tmp * 10) + (argv[j] - '0');
+			tmp = ((tmp * 10) + (argv[j] - '0')) * n;
 			in_num = 1;
 		}
 		else if (in_num == 1)
