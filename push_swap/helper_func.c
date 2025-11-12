@@ -15,20 +15,22 @@ Stack	*initialize(int max)
 		return (NULL);
 	}
 	st->top = -1;
+	st->ind = -1;
 	return (st);
 }
 
-// int	is_full(Stack *st, int max)
-// {
-// 	return (st->top == max);
-// }
+int	is_full(Stack *st, int max)
+{
+	return (st->ind == max);
+}
 
 void	push(int value, Stack *stack)
 {
 	int *arr;
 
 	arr = stack->arr;
-	arr[++stack->top] = value;
+	arr[++stack->ind] = value;
+	stack->top = 0;
 }
 
 int	is_found(int *arr, int val, int size)

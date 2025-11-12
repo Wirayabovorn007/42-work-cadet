@@ -6,10 +6,12 @@
 typedef struct Stack
 {
 	int	*arr;
+	int	ind;
 	int	top;
 }	Stack;
 
 int		push_swap(int argc, char *argv[]);
+int		is_full(Stack *st, int max);
 void	assign_init(Stack *a, int argc, char *argv[]);
 Stack	*initialize(int max);
 int		has_err(int argc, char *argv[]);
