@@ -129,7 +129,7 @@ int*	split_val(char *argv) // "-1 -2 -3" didn't handle this case yet
 	in_num = 0;
 	while (argv[j])
 	{
-		if (argv[j] == '-')
+		if (argv[j] == '-' && (argv[j + 1] >= '0' && argv[j + 1] <= '9'))
 			n = -1;
 		if (argv[j] >= '0' && argv[j] <= '9')
 		{
@@ -148,7 +148,7 @@ int*	split_val(char *argv) // "-1 -2 -3" didn't handle this case yet
 		j++;
 	}
 	if (in_num == 1)
-		arr[i] = tmp;
+		arr[i] = tmp * n;
 	// printf("arr[i]: %d\n", arr[i]);
 	return (arr);
 }
