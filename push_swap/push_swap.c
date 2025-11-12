@@ -8,6 +8,7 @@ int	push_swap(int argc, char *argv[])
 	Stack 	*b;
 	int		max;
 
+
 	if (has_err(argc, argv))
 		return (1);
 	max = argc - 1;
