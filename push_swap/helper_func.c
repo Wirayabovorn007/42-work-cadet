@@ -115,9 +115,9 @@ int*	split_val(char *argv) // "-1 -2 -3" didn't handle this case yet
 	int	in_num;
 
 	//printf("Size: %d\n", get_size(argv));
-	i = 0;
-	while (i < ft_strlen(argv))
-		if (!(argv[i] >= '0' && argv[i] <= '9') && !(argv[i] != ' ')) // "1 2 3 one 4"
+	i = -1;
+	while (++i < ft_strlen(argv))
+		if (!(argv[i] >= '0' && argv[i] <= '9') && !(argv[i] == ' ')) // "1 2 3 one 4"
 			return (NULL);
 	arr = malloc(get_size(argv) * sizeof(int));
 	if (!arr)
