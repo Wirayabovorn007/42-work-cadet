@@ -11,8 +11,6 @@ int	push_swap(int argc, char *argv[])
 	if (has_err(argc, argv))
 		return (1);
 	max = argc - 1;
-	if (argc == 2)
-		max = get_size(argv[1]);
 	a = initialize(max);
 	b = initialize(max);
 	if (!a || !b)
@@ -20,7 +18,7 @@ int	push_swap(int argc, char *argv[])
 	assign_init(a, argc, argv);
 	
 	int *arr; //test
-	int size = (argc == 2)? get_size(argv[1]):argc - 1;
+	int size = argc - 1;
 	arr = a->arr;
 	for (int i=0; i < size; i++)
 		printf("%d\n", arr[i]);

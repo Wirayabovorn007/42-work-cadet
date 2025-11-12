@@ -11,72 +11,44 @@ int	has_err(int argc, char *argv[])
 	if (argc < 2)
 		is_err = 1;
 	i = 1;
-	if (argc == 2) //dulplicate number
+	while (i < argc)
 	{
-		i--;
-		num_found = split_val(argv[1]);
-		if (!num_found)
+		j = 0;
+		long long res = 0;
+		int sign = 1;
+		if (argv[i][j] == '+' || argv[i][j] == '-')
+		{
+			if (argv[i][j] == '-')
+				sign = -1;
+			j++;
+		}
+		if (argv[i][j] == '\0') 
 		{
 			write(2, "Error\n", 7);
 			return (1);
 		}
-		while (i < get_size(argv[1]))
+		while (argv[i][j])
 		{
-			j = i + 1;
-			while (j < get_size(argv[1]))
+			if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
 			{
-				if (num_found[i] == num_found[j])
-				{
-					is_err = 1;
-					break ;
-				}
-				j++;
+				write(2, "Error\n", 7); // Error: non-digit
+				return (1);
 			}
-			if (is_err)
-				break ;
-			i++;
+			res = (res * 10) + (argv[i][j] - '0');
+			if ((sign == 1 && res > 2147483647) || (sign == -1 && (res * sign) < -2147483648))
+			{
+				write(2, "Error\n", 7); // Error: overflow
+				return (1);
+			}
+			j++;
 		}
-	}
-	else
-	{
-		while (i < argc)
-		{
-			j = 0;
-			long long res = 0;
-			int sign = 1;
-			if (argv[i][j] == '+' || argv[i][j] == '-')
-            {
-                if (argv[i][j] == '-')
-                    sign = -1;
-                j++;
-            }
-			if (argv[i][j] == '\0') 
-            {
-                write(2, "Error1\n", 7);
-                return (1);
-            }
-			while (argv[i][j])
-			{
-				if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
-				{
-					write(2, "Error2\n", 7); // Error: non-digit
-					return (1);
-				}
-				res = (res * 10) + (argv[i][j] - '0');
-				if ((sign == 1 && res > 2147483647) || (sign == -1 && (res * sign) < -2147483648))
-				{
-					write(2, "Error3\n", 7); // Error: overflow
-					return (1);
-				}
-				j++;
-			}
 			i++;
 		}
 		i = 1;
 		num_found = malloc(sizeof(int) * (argc - 1));
 		if (!num_found)
 		{
-			write(2, "Error4\n", 7);
+			write(2, "Error\n", 7);
 			return (1);
 		}
 		while (i < argc)
@@ -90,9 +62,8 @@ int	has_err(int argc, char *argv[])
 			num_found[i - 1] = ft_atoi(argv[i]);
 			i++;
 		}
+		if (is_err)
+			write(2, "Error\n", 7);
+		free(num_found);
+		return (is_err);
 	}
-	if (is_err)
-		write(2, "Error5\n", 7);
-	free(num_found);
-	return (is_err);
-}
