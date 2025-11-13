@@ -18,12 +18,16 @@ int	push_swap(int argc, char *argv[])
 		return (1);
 	assign_init(a, argc, argv);
 	//sort(a, b);
-	int *arr; //test
-	int size = argc - 1;
-	arr = a->arr;
-	for (int i=0; i < size; i++)
-		printf("%d\n", arr[i]);
-	printf("Top a : %d\n", arr[a->top]);
+
+	// int *arr; //test
+	// int size = a->top;
+	// arr = a->arr;
+	// while (size >= 0)
+	// {
+	// 	printf("%d\n", arr[size]);
+	// 	size--;
+	// }
+	// printf("Top a : %d\n", arr[a->top]);
 	free(a->arr);
 	free(a);
 	free(b->arr);

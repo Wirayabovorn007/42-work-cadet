@@ -6,7 +6,6 @@
 typedef struct Stack
 {
 	int	*arr;
-	int	ind;
 	int	top;
 }	Stack;
 
@@ -18,5 +17,12 @@ int		has_err(int argc, char *argv[]);
 int		is_found(int *arr, int val, int size);
 void	push(int value, Stack *stack);
 int		ft_atoi(const char *str);
+void	swap(Stack *a);
+void	ss(Stack *a, Stack *b);
+void	pa_pb(Stack *to_push, Stack *to_pop);
+void	rotate(Stack *st);
+void	reverse_rotate(Stack *st);
+void	rr(Stack *a, Stack *b);
+void	rrr(Stack *a, Stack *b);
 
 #endif

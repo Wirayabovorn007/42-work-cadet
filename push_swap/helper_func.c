@@ -15,13 +15,12 @@ Stack	*initialize(int max)
 		return (NULL);
 	}
 	st->top = -1;
-	st->ind = -1;
 	return (st);
 }
 
 int	is_full(Stack *st, int max)
 {
-	return (st->ind == max);
+	return (st->top == max);
 }
 
 void	push(int value, Stack *stack)
@@ -29,8 +28,7 @@ void	push(int value, Stack *stack)
 	int *arr;
 
 	arr = stack->arr;
-	arr[++stack->ind] = value;
-	stack->top = 0;
+	arr[++stack->top] = value;
 }
 
 int	is_found(int *arr, int val, int size)
@@ -59,14 +57,13 @@ int	ft_strlen(char *str)
 
 void	assign_init(Stack *a, int argc, char *argv[])
 {
-	int	i;
 	int	*arr;
 
-	i = 1;
-	while (i < argc)
+	argc--;
+	while (argc > 0)
 	{
-		push(ft_atoi(argv[i]), a);
-		i++;
+		push(ft_atoi(argv[argc]), a);
+		argc--;
 	}
 }
 

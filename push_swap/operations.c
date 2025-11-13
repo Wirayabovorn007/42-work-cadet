@@ -1,70 +1,75 @@
 #include "push_swap.h"
 
-void	sa(int *a)
+void	swap(Stack *a)
 {
 	int	temp;
 
-	temp = a[0];
-	a[0] = a[1];
-	a[1] = temp;
+	if (a->top < 1)
+		return ;
+	temp = a->arr[a->top];
+	a->arr[a->top] = a->arr[a->top - 1];
+	a->arr[a->top - 1] = temp;
 }
 
-void	sb(int *b)
+void	ss(Stack *a, Stack *b)
 {
-	int	temp;
-
-	temp = b[0];
-	b[0] = b[1];
-	b[1] = temp;
+	swap(a);
+	swap(b);
 }
 
-void	ss(int *a, int *b)
+void	pa_pb(Stack *to_push, Stack *to_pop)
 {
-	sa(a);
-	sb(b);
+	int	temp_top;
+
+	if (to_pop->top == -1)
+		return ;
+	temp_top = to_pop->arr[to_pop->top];
+	to_pop->top--;
+	push(temp_top, to_push);
 }
 
 void	rotate(Stack *st)
 {
-	int	*arr;
-	int	last;
 	int	i;
+	int	temp_top;
 
-	//set last equal to first
-	arr = st->arr;
-	last = arr[st->ind];
-	arr[st->ind] = arr[0];
-	arr[st->ind - 1] = last;
-	i = 1;
-	while (i < st->ind - 1)
+	if (st->top < 1)
+		return ;
+	temp_top = st->arr[st->top];
+	i = st->top;
+	while (i > 0)
 	{
-		arr[i - 1] = arr[i];
+		st->arr[i] = st->arr[i - 1];
+		i--;
 	}
+	st->arr[0] = temp_top;
 }
 
 void	reverse_rotate(Stack *st)
 {
+	int	i;
+	int	temp_bottom;
 
-}
-
-void	pb(Stack *a, Stack *b)
-{
-	int	temp;
-
-	temp = a->arr[0];
-}
-
-void	pa(Stack *a, Stack *b, int max)
-{
-	int	top_b;
-	int	*arr_b;
-	int	*arr_a;
-
-	if (b->ind == -1 || b->top == -1 || is_full(a, max))
+	if (st->top < 1)
 		return ;
-	arr_b = b->arr;
-	arr_a = a->arr;
-	top_b = arr_b[0];
-	arr_b[0] = NULL;
-	push(top_b, a);
+	temp_bottom = st->arr[0];
+	i = 0;
+	while (i < st->top)
+	{
+		st->arr[i] = st->arr[i + 1];
+		i++;
+	}
+	st->arr[st->top] = temp_bottom;
+}
+
+void	rr(Stack *a, Stack *b)
+{
+	rotate(a);
+	rotate(b);
+}
+
+void	rrr(Stack *a, Stack *b)
+{
+	reverse_rotate(a);
+	reverse_rotate(b);
 }
