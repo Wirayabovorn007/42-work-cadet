@@ -1,13 +1,12 @@
 
 #include "push_swap.h"
 
-#include <stdio.h> //test
+//#include <stdio.h> //test
 int	push_swap(int argc, char *argv[])
 {
 	Stack 	*a;
 	Stack 	*b;
 	int		max;
-
 
 	if (has_err(argc, argv))
 		return (1);
@@ -17,8 +16,12 @@ int	push_swap(int argc, char *argv[])
 	if (!a || !b)
 		return (1);
 	assign_init(a, argc, argv);
-	//sort(a, b);
+	if (!is_sorted(a))
+		sort_stack(a, b);
 
+	
+	
+	
 	// int *arr; //test
 	// int size = a->top;
 	// arr = a->arr;
@@ -28,6 +31,10 @@ int	push_swap(int argc, char *argv[])
 	// 	size--;
 	// }
 	// printf("Top a : %d\n", arr[a->top]);
+
+
+
+
 	free(a->arr);
 	free(a);
 	free(b->arr);

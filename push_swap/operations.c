@@ -15,6 +15,7 @@ void	ss(Stack *a, Stack *b)
 {
 	swap(a);
 	swap(b);
+	write(1, "ss\n", 4);
 }
 
 void	pa_pb(Stack *to_push, Stack *to_pop)
@@ -66,10 +67,60 @@ void	rr(Stack *a, Stack *b)
 {
 	rotate(a);
 	rotate(b);
+	write(1, "rr\n", 4);
 }
 
 void	rrr(Stack *a, Stack *b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
+	write(1, "rrr\n",5);
+}
+
+void	sa(Stack *a)
+{
+	swap(a);
+	write(1, "sa\n", 4);
+}
+
+void	sb(Stack *b)
+{
+	swap(b);
+	write(1, "sb\n", 4);
+}
+
+void	pa(Stack *a, Stack *b)
+{
+	pa_pb(a, b);
+	write(1, "pa\n", 4);
+}
+
+void	pb(Stack *a, Stack *b)
+{
+	pa_pb(b, a);
+	write(1, "pb\n", 4);
+}
+
+void	ra(Stack *a)
+{
+	rotate(a);
+	write(1, "ra\n", 4);
+}
+
+void	rb(Stack *b)
+{
+	rotate(b);
+	write(1, "rb\n", 4);
+}
+
+void	rra(Stack *a)
+{
+	reverse_rotate(a);
+	write(1, "rra\n", 5);
+}
+
+void	rrb(Stack *b)
+{
+	reverse_rotate(b);
+	write(1, "rrb\n", 5);
 }

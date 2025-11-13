@@ -24,5 +24,16 @@ void	rotate(Stack *st);
 void	reverse_rotate(Stack *st);
 void	rr(Stack *a, Stack *b);
 void	rrr(Stack *a, Stack *b);
+int		is_sorted(Stack *s);
+void	sort_stack(Stack *a, Stack *b);
+void	sa(Stack *a);
+void	sb(Stack *b);
+void	pa(Stack *a, Stack *b);
+void	pb(Stack *a, Stack *b);
+void	ra(Stack *a);
+void	rb(Stack *b);
+void	rra(Stack *a);
+void	rrb(Stack *b);
+void	ss(Stack *a, Stack *b);
 
 #endif
