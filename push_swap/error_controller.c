@@ -8,8 +8,6 @@ int	has_err(int argc, char *argv[])
 	int	*num_found;
 
 	is_err = 0;
-	if (argc < 2)
-		is_err = 1;
 	i = 1;
 	while (i < argc)
 	{

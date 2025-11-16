@@ -66,51 +66,57 @@ int	get_min_index(Stack *a, int min)
 void	sort_four_five(Stack *a, Stack *b)
 {
 	int min;
+	int	min_ind;
 	int size_a;
 
 	size_a = a->top + 1;
 	while (size_a > 3)
 	{
 		min = get_min(a);
-		while (a->arr[a->top] != min)
-			ra(a);
+		min_ind = get_min_index(a, min);
+		if (min_ind <= a->top / 2)
+			while (a->arr[a->top] != min)
+				rra(a);
+		else
+			while (a->arr[a->top] != min)
+				ra(a);
 		pb(a,b);
 		size_a--;
 	}
-
 	sort_three(a);
 	while (b->top != -1)
 		pa(a, b);
 }
 
-// void	radix_sort(Stack *a, Stack *b)
-// {
-// 	int	i;
-// 	int	j;
-// 	int	num;
-// 	int	size;
-// 	int	max_bits;
+void	move_smallest_to_top(Stack *a)
+{
+	int min;
+	int size_a;
 
-// 	i = 0;
-// 	size = a->top + 1;
-// 	//max_bits = get_max_bits(size);
-// 	while (i < max_bits)
-// 	{
-// 		j = 0;
-// 		while (j < size)
-// 		{
-// 			num = a->arr[a->top];
-// 			if (((num >> i) & 1) == 1)
-// 				ra(a);
-// 			else
-// 				pb(a, b);
-// 			j++;
-// 		}
-// 		while (b->top != -1)
-// 			pa(a, b);
-// 		i++;
-// 	}
-// }
+	size_a = a->top + 1;
+	while (size_a >= 0)
+	{
+		min = get_min(a);
+		while (a->arr[a->top] != min)
+			ra(a);
+		size_a--;
+	}
+}
+
+void	big_sort(Stack *a, Stack *b)
+{
+	int	len_a;
+
+	len_a = a->top + 1;
+	while (len_a-- > 3)
+	{
+		move_smallest_to_top(a);
+		pb(a, b);
+	}
+	sort_three(a);
+	while (b->top != -1)
+		pa(a, b);
+}
 
 void	sort_stack(Stack *a, Stack *b)
 {
@@ -133,6 +139,6 @@ void	sort_stack(Stack *a, Stack *b)
 		sort_three(a);
 	else if (len_a <= 5)
 		sort_four_five(a, b);
-	// else
-	//  	radix_sort(a, b);
+	else
+		big_sort(a, b);
 }
