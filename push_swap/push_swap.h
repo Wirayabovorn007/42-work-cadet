@@ -1,39 +1,48 @@
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
+
 #include <stdlib.h>
 #include <unistd.h>
 
-typedef struct Stack
+typedef struct stack
 {
-	int	*arr;
-	int	top;
+	int			index;
+	int			value;
+	int			push_cost;
+	int			is_cheapest;
+	int			is_above_median;
+	struct stack *target;
+	struct stack *next;
+	struct stack *prev;
 }	Stack;
 
-int		push_swap(int argc, char *argv[]);
-int		is_full(Stack *st, int max);
-void	assign_init(Stack *a, int argc, char *argv[]);
-Stack	*initialize(int max);
-int		has_err(int argc, char *argv[]);
-int		is_found(int *arr, int val, int size);
-void	push(int value, Stack *stack);
-int		ft_atoi(const char *str);
-void	swap(Stack *a);
-void	ss(Stack *a, Stack *b);
-void	pa_pb(Stack *to_push, Stack *to_pop);
-void	rotate(Stack *st);
-void	reverse_rotate(Stack *st);
-void	rr(Stack *a, Stack *b);
-void	rrr(Stack *a, Stack *b);
-int		is_sorted(Stack *s);
-void	sort_stack(Stack *a, Stack *b);
-void	sa(Stack *a);
-void	sb(Stack *b);
-void	pa(Stack *a, Stack *b);
-void	pb(Stack *a, Stack *b);
-void	ra(Stack *a);
-void	rb(Stack *b);
-void	rra(Stack *a);
-void	rrb(Stack *b);
-void	ss(Stack *a, Stack *b);
+int	push_swap(int argc, char *argv[]);
+int		can_split(char *str);
+char	**split_num(char *s, char c);
+int		init_stack(Stack **a, char *argv[]);
+int		has_err(char *argv[]);
+long	ft_atol(char *str);
+int		print_err();
+int	ft_isdigit(int c);
+int	can_join_split(char *argv[]);
+char **join_n_split(char *argv[]);
+int		sorted(Stack *a);
+void	sort_stack(Stack** a, Stack **b);
+int	len_stack(Stack *a);
+Stack* get_last_node(Stack *node);
+Stack	*get_max(Stack *stack);
+void	initiate_a(Stack *a, Stack *b);
+
+void	pa(Stack **a, Stack **b);
+void	pb(Stack **a, Stack **b);
+void	rra(Stack **a);
+void	rrb(Stack **b);
+void	rrr(Stack **a, Stack **b);
+void	ra(Stack **a);
+void	rb(Stack **b);
+void	rr(Stack **a, Stack **b);
+void	sa(Stack **a);
+void	sb(Stack **b);
+void	ss(Stack **a, Stack **b);
 
 #endif
