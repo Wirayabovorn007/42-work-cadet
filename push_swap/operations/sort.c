@@ -27,6 +27,20 @@ void	sort_three(Stack **a)
 		sa(a);
 }
 
+void	smallest_to_top(Stack **a)
+{
+	Stack	*min;
+
+	min = get_min(*a);
+	while (*a != min)
+	{
+		if (min->is_above_median)
+			ra(a);
+		else
+			rra(a);
+	}
+}
+
 void	sort_big_stack(Stack **a, Stack **b)
 {
 	int	len_a;
@@ -38,16 +52,25 @@ void	sort_big_stack(Stack **a, Stack **b)
 		pb(a, b);
 	while (len_a-- > 3 && !sorted(*a))
 	{
-		initiate_a(*a, *b);
+		update_a(*a, *b);
+		move_cheapest_a_to_b(a, b);
 	}
+	sort_three(a);
+	while (*b)
+	{
+		update_b(*a, *b);
+		move_cheapest_b_to_a(a, b);
+	}
+	set_is_above_median(*a);
+	smallest_to_top(a);
 }
 
 void	sort_stack(Stack** a, Stack **b)
 {
 	if (len_stack(*a) == 2)
-		sa(&a);
+		sa(a);
 	else if (len_stack(*a) == 3)
-		sort_three(&a);
+		sort_three(a);
 	else
-		sort_big_stack(&a, &b);
+		sort_big_stack(a, b);
 }
