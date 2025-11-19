@@ -2,7 +2,7 @@ NAME = push_swap
 CC = cc
 FLAGS = -Wall -Wextra -Werror
 
-SRC = $(wildcard srcs/*.c)
+SRC = $(wildcard main.c)
 UTILS = $(wildcard utils/*.c)
 CMDS = $(wildcard operations/*.c)
 

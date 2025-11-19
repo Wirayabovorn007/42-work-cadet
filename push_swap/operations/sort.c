@@ -61,7 +61,7 @@ void	sort_big_stack(Stack **a, Stack **b)
 		update_b(*a, *b);
 		move_cheapest_b_to_a(a, b);
 	}
-	set_is_above_median(*a);
+	update_index(*a);
 	smallest_to_top(a);
 }
 

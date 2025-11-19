@@ -10,13 +10,32 @@ int	ft_strlen(const char *s)
 	return (i);
 }
 
+char	*ft_strdup(char *src)
+{
+	char	*ptr;
+	char	*dup;
+
+	dup = (char *)malloc(ft_strlen(src) + 1);
+	if (!dup)
+		return (NULL);
+	ptr = dup;
+	while (*src)
+	{
+		*ptr = *src;
+		ptr++;
+		src++;
+	}
+	*ptr = '\0';
+	return (dup);
+}
+
 char	*ft_strjoin(char *s1, char *s2)
 {
-	int	len1;
-	int	len2;
+	int		len1;
+	int		len2;
 	char	*res;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -31,11 +50,10 @@ char	*ft_strjoin(char *s1, char *s2)
 		res[i] = s1[i];
 		i++;
 	}
-	res[i] = ' ';
+	res[i++] = ' ';
 	while (j < len2)
 		res[i++] = s2[j++];
 	res[i] = '\0';
-	free(s1);
 	return (res);
 }
 
@@ -44,11 +62,24 @@ char **join_n_split(char *argv[])
 	int		i;
 	char	**final;
 	char	*joined;
+	char	*temp_join;
 
-	i = 1;
+	if (!argv[1])
+		return (NULL);
+	joined = ft_strdup(argv[1]);
+	if (!joined)
+		return (NULL);
+	i = 2;
 	while (argv[i])
 	{
-		joined = ft_strjoin(argv[i - 1], argv[i]);
+		temp_join = ft_strjoin(joined, argv[i]);
+		if (!temp_join)
+		{
+			free(joined);
+			return (NULL);
+		}
+		free(joined);
+		joined = temp_join;
 		i++;
 	}
 	final = split_num(joined, ' ');
