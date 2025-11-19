@@ -188,21 +188,43 @@ void	calculate_push_cost_a(Stack *a, Stack *b)
 {
 	int	len_a;
 	int	len_b;
+	int	cost_a;
+	int	cost_b;
 
 	len_a = len_stack(a);
 	len_b = len_stack(b);
 	while (a)
 	{
-		a->push_cost = a->index;
+		// 1. Calculate raw cost for A (moves to get A to top)
+		cost_a = a->index;
 		if (!(a->is_above_median))
-			a->push_cost = len_a - (a->index);
+			cost_a = len_a - a->index;
+
+		// 2. Calculate raw cost for Target B (moves to get Target to top)
+		cost_b = 0;
 		if (a->target)
 		{
-			if (a->target->is_above_median)
-				a->push_cost += a->target->index;
-			else
-				a->push_cost += len_b - (a->target->index);
+			cost_b = a->target->index;
+			if (!(a->target->is_above_median))
+				cost_b = len_b - a->target->index;
 		}
+
+		// 3. Combine costs intelligently (optimization)
+		if (a->is_above_median && a->target && a->target->is_above_median)
+			// Both are in top half -> both need `ra` / `rb` -> use `rr`
+			// Cost is the greater of the two (shared moves)
+			a->push_cost = (cost_a > cost_b) ? cost_a : cost_b;
+		
+		else if (!a->is_above_median && a->target && !a->target->is_above_median)
+			// Both are in bottom half -> both need `rra` / `rrb` -> use `rrr`
+			// Cost is the greater of the two (shared moves)
+			a->push_cost = (cost_a > cost_b) ? cost_a : cost_b;
+			
+		else
+			// One is top half, one is bottom half -> no shared moves
+			// Cost is sum of both
+			a->push_cost = cost_a + cost_b;
+
 		a = a->next;
 	}
 }
