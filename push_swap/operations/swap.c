@@ -2,15 +2,19 @@
 
 void	swap(Stack **head)
 {
+	Stack *first;
+	Stack *second;
 	if (!*head || !(*head)->next)
 		return ;
-	*head = (*head)->next;
-	(*head)->prev->prev = *head;
-	(*head)->prev->next = (*head)->next;
-	if ((*head)->next)
-		(*head)->next->prev = (*head)->prev;
-	(*head)->next = (*head)->prev;
-	(*head)->prev = NULL;
+	first = *head;
+	second = first->next;	
+	first->next = second->next;
+	if (second->next)
+		second->next->prev = first;
+	second->prev = NULL;
+	second->next = first;
+	first->prev = second;
+	*head = second;
 }
 
 void	sa(Stack **a)

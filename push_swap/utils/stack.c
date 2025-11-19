@@ -36,6 +36,7 @@ void	append(Stack **st, int val)
 		return ;
 	node->next = NULL;
 	node->value = val;
+	node->index = 0;
 	node->is_cheapest = 0;
 	node->is_above_median = 0;
 	if (!(*st))
@@ -66,13 +67,12 @@ int	init_stack(Stack **a, char *argv[])
 
 Stack	*get_max(Stack *stack)
 {
-	int		max;
+	long	max;
 	Stack	*maxnode;
 
 	if (!stack)
 		return (NULL);
-	max = stack->value;
-	maxnode = stack;
+	max = LONG_MIN;
 	while (stack)
 	{
 		if (stack->value > max)
@@ -87,13 +87,12 @@ Stack	*get_max(Stack *stack)
 
 Stack	*get_min(Stack *stack)
 {
-	int		min;
+	long	min;
 	Stack	*minnode;
 
 	if (!stack)
 		return (NULL);
-	min = stack->value;
-	minnode = stack;
+	min = LONG_MAX;
 	while (stack)
 	{
 		if (stack->value < min)
@@ -131,11 +130,11 @@ void	set_target_a(Stack *a, Stack *b)
 {
 	Stack	*curr_b;
 	Stack	*target;
-	int		bestmatch;
+	long	bestmatch;
 
 	while (a)
 	{
-		bestmatch = -2147483648;
+		bestmatch = LONG_MIN;
 		curr_b = b;
 		while (curr_b)
 		{
@@ -146,7 +145,7 @@ void	set_target_a(Stack *a, Stack *b)
 			}
 			curr_b = curr_b->next;
 		}
-		if (bestmatch == -2147483648)
+		if (bestmatch == LONG_MIN)
 			a->target = get_max(b);
 		else
 			a->target = target;
@@ -157,11 +156,11 @@ void	set_target_b(Stack *a, Stack *b)
 {
 	Stack	*curr_a;
 	Stack	*target;
-	int		bestmatch;
+	long	bestmatch;
 
 	while (b)
 	{
-		bestmatch = 2147483647;
+		bestmatch = LONG_MAX;
 		curr_a = a;
 		while (curr_a)
 		{
@@ -172,7 +171,7 @@ void	set_target_b(Stack *a, Stack *b)
 			}
 			curr_a = curr_a->next;
 		}
-		if (bestmatch == 2147483647)
+		if (bestmatch == LONG_MAX)
 			b->target = get_min(a);
 		else
 			b->target = target;
@@ -192,17 +191,20 @@ void	calculate_push_cost_a(Stack *a, Stack *b)
 		a->push_cost = a->index;
 		if (!(a->is_above_median))
 			a->push_cost = len_a - (a->index);
-		if (a->target->is_above_median)
-			a->push_cost += a->target->index;
-		else
-			a->push_cost += len_b - (a->target->index);
+		if (a->target)
+		{
+			if (a->target->is_above_median)
+				a->push_cost += a->target->index;
+			else
+				a->push_cost += len_b - (a->target->index);
+		}
 		a = a->next;
 	}
 }
 
 void	set_is_cheapest(Stack	*stack)
 {
-	int	cheapest_val;
+	long	cheapest_val;
 	Stack*	cheapest_node;
 	Stack*	curr;
 
@@ -215,7 +217,7 @@ void	set_is_cheapest(Stack	*stack)
 		curr = curr->next;
 	}
 	cheapest_node = NULL;
-	cheapest_val = 2147483647;
+	cheapest_val = LONG_MAX;
 	while (stack)
 	{
 		if (stack->push_cost < cheapest_val)
@@ -225,7 +227,8 @@ void	set_is_cheapest(Stack	*stack)
 		}
 		stack = stack->next;
 	}
-	cheapest_node->is_cheapest = 1;
+	if (cheapest_node)
+		cheapest_node->is_cheapest = 1;
 }
 
 void	update_a(Stack *a, Stack *b)
@@ -299,6 +302,8 @@ void	move_cheapest_a_to_b(Stack **a, Stack **b)
 	Stack	*cheapest;
 
 	cheapest = get_cheapest(*a);
+	if (!cheapest)
+		return ;
 	if (cheapest->is_above_median && cheapest->target->is_above_median)
 		rotate_with_cheap(a, b, cheapest);
 	else if (!(cheapest->is_above_median) && !(cheapest->target->is_above_median))
@@ -310,6 +315,8 @@ void	move_cheapest_a_to_b(Stack **a, Stack **b)
 
 void	move_cheapest_b_to_a(Stack **a, Stack **b)
 {
+	if (!b)
+		return ;
 	required_node_to_top(a, (*b)->target, 'a');
 	pa(a, b);
 }
