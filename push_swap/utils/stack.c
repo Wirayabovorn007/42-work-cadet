@@ -35,6 +35,7 @@ void	append(Stack **st, int val)
 	if (!node)
 		return ;
 	node->next = NULL;
+	node->target = NULL;
 	node->value = val;
 	node->index = 0;
 	node->is_cheapest = 0;
@@ -73,6 +74,7 @@ Stack	*get_max(Stack *stack)
 	if (!stack)
 		return (NULL);
 	max = LONG_MIN;
+	maxnode = NULL;
 	while (stack)
 	{
 		if (stack->value > max)
@@ -93,6 +95,7 @@ Stack	*get_min(Stack *stack)
 	if (!stack)
 		return (NULL);
 	min = LONG_MAX;
+	minnode = NULL;
 	while (stack)
 	{
 		if (stack->value < min)
@@ -136,6 +139,7 @@ void	set_target_a(Stack *a, Stack *b)
 	{
 		bestmatch = LONG_MIN;
 		curr_b = b;
+		target = NULL;
 		while (curr_b)
 		{
 			if (curr_b->value < a->value && curr_b->value > bestmatch)
@@ -162,6 +166,7 @@ void	set_target_b(Stack *a, Stack *b)
 	{
 		bestmatch = LONG_MAX;
 		curr_a = a;
+		target = NULL;
 		while (curr_a)
 		{
 			if (curr_a->value > b->value && curr_a->value < bestmatch)
@@ -315,7 +320,7 @@ void	move_cheapest_a_to_b(Stack **a, Stack **b)
 
 void	move_cheapest_b_to_a(Stack **a, Stack **b)
 {
-	if (!b)
+	if (!*b)
 		return ;
 	required_node_to_top(a, (*b)->target, 'a');
 	pa(a, b);

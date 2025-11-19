@@ -17,18 +17,18 @@ void	reverse_rotate(Stack **stack)
 void	rra(Stack **a)
 {
 	reverse_rotate(a);
-	write(1, "rra\n", 5);
+	write(1, "rra\n", 4);
 }
 
 void	rrb(Stack **b)
 {
 	reverse_rotate(b);
-	write(1, "rrb\n", 5);
+	write(1, "rrb\n", 4);
 }
 
 void	rrr(Stack **a, Stack **b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	write(1, "rrr\n", 5);
+	write(1, "rrr\n", 4);
 }

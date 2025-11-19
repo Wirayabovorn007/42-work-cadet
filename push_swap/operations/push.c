@@ -28,11 +28,11 @@ void	push(Stack **src, Stack **dst)
 void	pa(Stack **a, Stack **b)
 {
 	push(b, a); 
-	write(1, "pa\n", 4);
+	write(1, "pa\n", 3);
 }
 
 void	pb(Stack **a, Stack **b)
 {
 	push(a, b);
-	write(1, "pb\n", 4);
+	write(1, "pb\n", 3);
 }

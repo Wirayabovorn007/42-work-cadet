@@ -20,18 +20,18 @@ void	swap(Stack **head)
 void	sa(Stack **a)
 {
 	swap(a);
-	write(1, "sa\n", 4);
+	write(1, "sa\n", 3);
 }
 
 void	sb(Stack **b)
 {
 	swap(b);
-	write(1, "sb\n", 4);
+	write(1, "sb\n", 3);
 }
 
 void	ss(Stack **a, Stack **b)
 {
 	swap(a);
 	swap(b);
-	write(1, "ss\n", 4);
+	write(1, "ss\n", 3);
 }
