@@ -1,5 +1,5 @@
 
-#include "../push_swap.h"
+#include "../include/push_swap.h"
 
 int	sorted(Stack *a)
 {

@@ -1,4 +1,4 @@
-#include "../push_swap.h"
+#include "../include/push_swap.h"
 
 void	check_input(int *must_free_args, int argc,
 	char *argv[], char ***args_to_process)

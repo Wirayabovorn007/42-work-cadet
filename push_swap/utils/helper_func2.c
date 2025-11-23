@@ -1,4 +1,4 @@
-#include "../push_swap.h"
+#include "../include/push_swap.h"
 
 void	free_split_array(char **array)
 {
