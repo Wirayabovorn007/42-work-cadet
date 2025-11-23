@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-Stack* get_last_node(Stack *node)
+Stack*	get_last_node(Stack *node)
 {
 	if (!node)
 		return (NULL);
@@ -156,6 +156,7 @@ void	set_target_a(Stack *a, Stack *b)
 		a = a->next;
 	}
 }
+
 void	set_target_b(Stack *a, Stack *b)
 {
 	Stack	*curr_a;
@@ -213,12 +214,22 @@ void	calculate_push_cost_a(Stack *a, Stack *b)
 		if (a->is_above_median && a->target && a->target->is_above_median)
 			// Both are in top half -> both need `ra` / `rb` -> use `rr`
 			// Cost is the greater of the two (shared moves)
-			a->push_cost = (cost_a > cost_b) ? cost_a : cost_b;
+		{
+			if (cost_a > cost_b)
+				a->push_cost = cost_a;
+			else
+				a->push_cost = cost_b;
+		}
 		
 		else if (!a->is_above_median && a->target && !a->target->is_above_median)
 			// Both are in bottom half -> both need `rra` / `rrb` -> use `rrr`
 			// Cost is the greater of the two (shared moves)
-			a->push_cost = (cost_a > cost_b) ? cost_a : cost_b;
+		{
+			if (cost_a > cost_b)
+				a->push_cost = cost_a;
+			else
+				a->push_cost = cost_b;
+		}
 			
 		else
 			// One is top half, one is bottom half -> no shared moves

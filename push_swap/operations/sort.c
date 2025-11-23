@@ -50,6 +50,8 @@ void	sort_big_stack(Stack **a, Stack **b)
 		pb(a, b);
 	if (len_a-- > 3 && !sorted(*a))
 		pb(a, b);
+	if (*b && (*b)->next && (*b)->value < (*b)->next->value)
+		sb(b);
 	while (len_a-- > 3 && !sorted(*a))
 	{
 		update_a(*a, *b);

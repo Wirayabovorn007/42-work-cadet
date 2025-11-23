@@ -57,7 +57,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (res);
 }
 
-char **join_n_split(char *argv[])
+char	**join_n_split(char *argv[])
 {
 	int		i;
 	char	**final;
@@ -69,8 +69,8 @@ char **join_n_split(char *argv[])
 	joined = ft_strdup(argv[1]);
 	if (!joined)
 		return (NULL);
-	i = 2;
-	while (argv[i])
+	i = 1;
+	while (argv[++i])
 	{
 		temp_join = ft_strjoin(joined, argv[i]);
 		if (!temp_join)
@@ -80,7 +80,6 @@ char **join_n_split(char *argv[])
 		}
 		free(joined);
 		joined = temp_join;
-		i++;
 	}
 	final = split_num(joined, ' ');
 	free(joined);

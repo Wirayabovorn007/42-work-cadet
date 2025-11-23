@@ -24,7 +24,7 @@ int		init_stack(Stack **a, char *argv[]);
 int		has_err(char *argv[]);
 long	ft_atol(char *str);
 void	free_split_array(char **array);
-int		print_err();
+int		print_err(void);
 int		ft_isdigit(int c);
 int		can_join_split(char *argv[]);
 char	**join_n_split(char *argv[]);
