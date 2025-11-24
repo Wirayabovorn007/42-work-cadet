@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_func2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:11:07 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/11/24 14:11:08 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/11/24 20:57:09 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	free_split_array(char **array)
 	i = 0;
 	while (array[i])
 	{
-		free(array[i]); // Free each individual string
+		free(array[i]);
 		i++;
 	}
-	free(array); // Free the array of pointers
+	free(array);
 }
 
 long	ft_atol(char *str)

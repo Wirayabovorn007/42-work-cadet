@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiboonpr <wiboonpr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wiraya <wiraya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 14:11:34 by wiboonpr          #+#    #+#             */
-/*   Updated: 2025/11/24 14:11:35 by wiboonpr         ###   ########.fr       */
+/*   Updated: 2025/11/24 20:58:22 by wiraya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,12 +208,9 @@ void	calculate_push_cost_a(Stack *a, Stack *b)
 	len_b = len_stack(b);
 	while (a)
 	{
-		// 1. Calculate raw cost for A (moves to get A to top)
 		cost_a = a->index;
 		if (!(a->is_above_median))
 			cost_a = len_a - a->index;
-
-		// 2. Calculate raw cost for Target B (moves to get Target to top)
 		cost_b = 0;
 		if (a->target)
 		{
@@ -221,11 +218,7 @@ void	calculate_push_cost_a(Stack *a, Stack *b)
 			if (!(a->target->is_above_median))
 				cost_b = len_b - a->target->index;
 		}
-
-		// 3. Combine costs intelligently (optimization)
 		if (a->is_above_median && a->target && a->target->is_above_median)
-			// Both are in top half -> both need `ra` / `rb` -> use `rr`
-			// Cost is the greater of the two (shared moves)
 		{
 			if (cost_a > cost_b)
 				a->push_cost = cost_a;
@@ -234,8 +227,6 @@ void	calculate_push_cost_a(Stack *a, Stack *b)
 		}
 		
 		else if (!a->is_above_median && a->target && !a->target->is_above_median)
-			// Both are in bottom half -> both need `rra` / `rrb` -> use `rrr`
-			// Cost is the greater of the two (shared moves)
 		{
 			if (cost_a > cost_b)
 				a->push_cost = cost_a;
@@ -244,8 +235,6 @@ void	calculate_push_cost_a(Stack *a, Stack *b)
 		}
 			
 		else
-			// One is top half, one is bottom half -> no shared moves
-			// Cost is sum of both
 			a->push_cost = cost_a + cost_b;
 
 		a = a->next;
