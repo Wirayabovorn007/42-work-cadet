@@ -1,18 +1,20 @@
 
-
 #include <unistd.h>
 
-int ft_strcmp(char *s1, char s2)
+int is_sub(char *found, char *src)
 {
-	while (*s1 && (*s1 == s2))
+	int	i;
+	i = 0;
+	while (src[i])
 	{
-		s1++;
-		s2++;
+		if (found[i] != src[i])
+			return 0;
+		i++;
 	}
-	return (*s1 - s2);
+	return (1);
 }
 
-void print_naja(char *str)
+void	print_na(char *str)
 {
 	int i =0;
 
@@ -25,24 +27,47 @@ void print_naja(char *str)
 
 int main(int argc, char *argv[])
 {
+	char*search;
+	char*replace;
+	char *str;
+
 	if (argc != 4 || !argv[1])
 	{
 		write(1, "\n", 1);
 		return 1;
 	}
-	char *str = argv[1];
-	char* search = argv[2];
-	char* replace = argv[3];
-
-	int i =0;
-	while (str[i])
+	str = argv[1];
+	search = argv[2];
+	replace = argv[3];
+	int has_sub = 0;
+	while (*str) //if not contain any of substr
 	{
-		if (ft_strcmp(search, str[i]) == 0)
-			print_naja(replace);
-		else
-			write(1, &str[i], 1);
-		i++;
+		if (is_sub(str, search))
+		{
+			has_sub++;
+			break ;
+		}
+		str++;
 	}
-	write(1, "\n", 1);
-	return 0;
+	if (!has_sub)
+	{
+		write(1, "\n", 1);
+		return 1;
+	}
+	str = argv[1];
+	while (*str)
+	{
+		if (*str == *search)
+		{
+			if (is_sub(str, search))
+			{
+				print_na(replace);
+				str++;
+				continue ;
+			}
+		}
+		write(1, &(*str), 1);
+		str++;
+	}
+	print_na("\n");
 }
